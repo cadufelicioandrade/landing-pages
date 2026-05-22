@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Office Automation — Extract Tables from Any Website</title>
+  <meta name="description" content="Extract HTML tables from any website and export to Excel, CSV, JSON or PDF in one click. Free Chrome extension." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0d0d14;
+      --ink2: #2a2a3d;
+      --muted: #6b7280;
+      --accent: #4f46e5;
+      --accent2: #7c3aed;
+      --gold: #f59e0b;
+      --surface: #ffffff;
+      --bg: #f8f8fc;
+      --border: #e5e5f0;
+      --r: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--surface);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 62px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      overflow: visible;
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 18px;
+      color: var(--accent);
+      display: flex; align-items: center; gap: 8px;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .nav-logo span { color: var(--ink); }
+    .nav-links { display: flex; align-items: center; gap: clamp(12px, 2vw, 28px); flex-shrink: 1; }
+    .nav-links a {
+      font-size: clamp(11px, 1.2vw, 13px); font-weight: 500; color: var(--muted);
+      text-decoration: none; transition: color .2s; white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* Language selector */
+    .lang-select {
+      font-size: 12px; border: 1px solid var(--border);
+      border-radius: 6px; padding: 4px 8px; color: var(--ink2);
+      background: var(--surface); cursor: pointer; outline: none;
+    }
+
+    .btn-nav {
+      background: var(--accent); color: white;
+      font-size: clamp(11px, 1.2vw, 13px); font-weight: 600;
+      padding: 8px 14px; border-radius: 8px;
+      text-decoration: none; transition: opacity .2s;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .btn-nav:hover { opacity: .85; }
+
+    .nav-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; cursor: pointer;
+      padding: 6px; width: 36px; height: 36px;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--ink); border-radius: 2px; transition: all .3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 88vh;
+      display: grid; place-items: center;
+      padding: 80px 5vw 60px;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, #ede9ff 0%, transparent 70%),
+                  radial-gradient(ellipse 50% 40% at 90% 80%, #fef3c7 0%, transparent 60%),
+                  var(--surface);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 860px;
+      position: relative;
+    }
+    .hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234f46e5' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+      pointer-events: none;
+    }
+    .hero-content { position: relative; max-width: 760px; width: 100%; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #ede9ff; color: var(--accent);
+      font-size: 12px; font-weight: 600;
+      padding: 5px 12px; border-radius: 100px;
+      margin-bottom: 24px;
+      border: 1px solid #c7d2fe;
+      animation: fadeUp .6s ease both;
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 5.5vw, 68px);
+      font-weight: 800; line-height: 1.07;
+      letter-spacing: -1.5px;
+      word-break: break-word;
+      animation: fadeUp .6s .1s ease both;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 300; color: var(--muted);
+      margin: 20px auto 36px; max-width: 540px; line-height: 1.6;
+      animation: fadeUp .6s .2s ease both;
+    }
+    .hero-ctas {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      flex-wrap: wrap;
+      animation: fadeUp .6s .3s ease both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white; font-weight: 600; font-size: 15px;
+      padding: 14px 28px; border-radius: 10px;
+      text-decoration: none; transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 20px rgba(79,70,229,.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(79,70,229,.4); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: white; color: var(--ink2); font-weight: 500; font-size: 15px;
+      padding: 14px 28px; border-radius: 10px;
+      text-decoration: none; border: 1.5px solid var(--border);
+      transition: border-color .2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-note {
+      margin-top: 16px; font-size: 12px; color: var(--muted);
+      animation: fadeUp .6s .4s ease both;
+    }
+    .hero-note strong { color: var(--ink); }
+
+    /* Hero screenshot mockup */
+    .hero-mockup {
+      margin: 48px auto 0;
+      max-width: 520px;
+      width: 100%;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 30px 80px rgba(79,70,229,.12), 0 0 0 1px var(--border);
+      overflow: hidden;
+      animation: fadeUp .8s .4s ease both;
+    }
+    .mockup-bar {
+      background: var(--accent);
+      padding: 12px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .mockup-bar-left { display: flex; align-items: center; gap: 8px; }
+    .mockup-bar-left h3 { color: white; font-size: 14px; font-weight: 600; font-family: 'Syne', sans-serif; }
+    .mockup-bar-left p { color: rgba(255,255,255,.7); font-size: 10px; }
+    .mockup-badge { background: rgba(255,255,255,.2); color: white; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; }
+    .mockup-body { padding: 16px; }
+    .mockup-tabs { display: flex; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+    .mockup-tab { flex: 1; text-align: center; padding: 8px; font-size: 11px; font-weight: 500; color: var(--muted); }
+    .mockup-tab.active { color: var(--accent); border-bottom: 2px solid var(--accent); }
+    .mockup-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 6px;
+      font-size: 12px;
+    }
+    .mockup-row-left { display: flex; align-items: center; gap: 8px; }
+    .mockup-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); }
+    .mockup-row-title { font-weight: 500; }
+    .mockup-row-url { font-size: 10px; color: var(--muted); }
+    .mockup-chip { font-size: 10px; background: #ede9ff; color: var(--accent); border-radius: 20px; padding: 2px 7px; font-weight: 600; }
+    .mockup-btn {
+      width: 100%; margin-top: 12px;
+      background: var(--accent); color: white; border: none;
+      border-radius: 8px; padding: 10px; font-size: 13px; font-weight: 600;
+      cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+
+    /* ── LOGOS ── */
+    .logos {
+      padding: 32px 5vw;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      background: var(--bg);
+    }
+    .logos p { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 20px; font-weight: 600; }
+    .logos-row {
+      display: flex; flex-wrap: wrap; gap: 32px;
+      align-items: center; justify-content: center;
+    }
+    .logo-item {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 16px; color: #ccc; letter-spacing: -0.5px;
+    }
+
+    /* ── SECTION GENERIC ── */
+    section { padding: 96px 5vw; }
+    .section-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--accent); margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800; letter-spacing: -1px;
+      line-height: 1.1; max-width: 560px;
+    }
+    .section-sub {
+      color: var(--muted); font-size: 16px; font-weight: 300;
+      margin-top: 12px; max-width: 480px; line-height: 1.65;
+    }
+    .section-center { text-align: center; }
+    .section-center .section-title, .section-center .section-sub { margin-left: auto; margin-right: auto; }
+
+    /* ── FEATURES ── */
+    .features { background: var(--bg); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px; margin-top: 56px;
+    }
+    .feature-card {
+      background: white; border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px 24px;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .feature-card:hover { box-shadow: 0 12px 36px rgba(79,70,229,.1); transform: translateY(-4px); }
+    .feature-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: linear-gradient(135deg, #ede9ff, #ddd6fe);
+      display: grid; place-items: center;
+      font-size: 20px; margin-bottom: 16px;
+    }
+    .feature-card h3 {
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 8px;
+    }
+    .feature-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .pro-tag {
+      display: inline-block; margin-top: 10px;
+      font-size: 10px; font-weight: 700; color: #92400e;
+      background: #fef3c7; border-radius: 4px; padding: 2px 7px;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0; margin-top: 56px; position: relative;
+    }
+    .how-steps::before {
+      content: "";
+      position: absolute; top: 30px; left: 10%; right: 10%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+    .step {
+      text-align: center; padding: 24px 16px;
+    }
+    .step-num {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white; font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800;
+      display: grid; place-items: center; margin: 0 auto 16px;
+      box-shadow: 0 8px 20px rgba(79,70,229,.3);
+    }
+    .step h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+    .step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── PRICING ── */
+    .pricing { background: var(--bg); }
+    .pricing-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 20px; max-width: 700px; margin: 56px auto 0;
+    }
+    @media (max-width: 600px) { .pricing-grid { grid-template-columns: 1fr; } }
+    .price-card {
+      background: white; border: 1.5px solid var(--border);
+      border-radius: 20px; padding: 32px 28px;
+    }
+    .price-card.featured {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-color: transparent; color: white;
+      position: relative; overflow: hidden;
+    }
+    .price-card.featured::before {
+      content: "MOST POPULAR";
+      position: absolute; top: 16px; right: -18px;
+      background: var(--gold); color: #1a1a2e;
+      font-size: 9px; font-weight: 800; letter-spacing: 1px;
+      padding: 4px 24px; transform: rotate(30deg);
+    }
+    .price-plan { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; opacity: .6; margin-bottom: 8px; }
+    .price-amount { font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; letter-spacing: -2px; line-height: 1; }
+    .price-amount span { font-size: 16px; font-weight: 400; opacity: .6; }
+    .price-desc { font-size: 13px; opacity: .7; margin: 8px 0 24px; }
+    .price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .price-features li { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+    .price-features li::before { content: "✓"; font-weight: 700; color: var(--success, #22c55e); flex-shrink: 0; }
+    .price-card.featured .price-features li::before { color: #a7f3d0; }
+    .price-card.featured .price-features li { color: rgba(255,255,255,.9); }
+    .btn-price {
+      display: block; text-align: center; width: 100%;
+      padding: 12px; border-radius: 10px; font-weight: 600; font-size: 14px;
+      text-decoration: none; transition: opacity .2s;
+    }
+    .btn-price:hover { opacity: .85; }
+    .btn-price-outline {
+      background: transparent; border: 1.5px solid var(--border); color: var(--ink2);
+    }
+    .btn-price-white {
+      background: white; color: var(--accent);
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px; margin-top: 56px;
+    }
+    .testi-card {
+      background: white; border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px;
+    }
+    .testi-stars { color: var(--gold); font-size: 14px; margin-bottom: 12px; }
+    .testi-text { font-size: 14px; color: var(--ink2); line-height: 1.65; margin-bottom: 16px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 10px; }
+    .testi-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: grid; place-items: center; color: white; font-weight: 700; font-size: 14px;
+      flex-shrink: 0;
+    }
+    .testi-name { font-weight: 600; font-size: 13px; }
+    .testi-role { font-size: 11px; color: var(--muted); }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 680px; margin: 56px auto 0; }
+    .faq-item {
+      border-bottom: 1px solid var(--border); padding: 20px 0;
+    }
+    .faq-q {
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px;
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+      gap: 16px;
+    }
+    .faq-icon { flex-shrink: 0; font-size: 20px; color: var(--accent); transition: transform .2s; }
+    .faq-a { font-size: 14px; color: var(--muted); line-height: 1.7; margin-top: 12px; display: none; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      margin: 0 5vw 80px;
+      border-radius: 24px;
+      padding: 64px 5vw;
+      text-align: center; color: white;
+      position: relative; overflow: hidden;
+    }
+    .cta-banner::before {
+      content: "";
+      position: absolute; top: -60px; right: -60px;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: rgba(255,255,255,.06);
+    }
+    .cta-banner::after {
+      content: "";
+      position: absolute; bottom: -80px; left: -40px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: rgba(255,255,255,.04);
+    }
+    .cta-banner h2 {
+      font-family: 'Syne', sans-serif; font-size: clamp(26px, 4vw, 42px);
+      font-weight: 800; letter-spacing: -1px; margin-bottom: 12px;
+      position: relative;
+    }
+    .cta-banner p { font-size: 16px; opacity: .8; margin-bottom: 32px; position: relative; }
+    .cta-banner .btn-primary {
+      background: white; color: var(--accent);
+      box-shadow: 0 8px 30px rgba(0,0,0,.2);
+      position: relative;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,.5);
+      padding: 40px 5vw;
+      display: flex; flex-wrap: wrap; gap: 20px;
+      align-items: center; justify-content: space-between;
+      font-size: 12px;
+    }
+    footer strong { color: white; font-family: 'Syne', sans-serif; }
+    footer a { color: rgba(255,255,255,.5); text-decoration: none; }
+    footer a:hover { color: white; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-corelitfnexus {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 11px; color: rgba(255,255,255,.35);
+      border-top: 1px solid rgba(255,255,255,.08);
+      width: 100%; padding-top: 20px; margin-top: 4px;
+      justify-content: center;
+    }
+    .footer-corelitfnexus a {
+      color: rgba(255,255,255,.55); font-weight: 600;
+      font-family: 'Syne', sans-serif; font-size: 12px;
+      letter-spacing: 0.5px; text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-corelitfnexus a:hover { color: white; }
+    .corelitfnexus-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent); display: inline-block;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE 900px ── */
+    @media (max-width: 900px) {
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 12px; }
+      .btn-nav { padding: 7px 12px; font-size: 12px; }
+    }
+
+    /* ── RESPONSIVE mobile ── */
+    @media (max-width: 768px) {
+      /* Nav */
+      nav { height: auto; min-height: 62px; flex-wrap: wrap; }
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        display: none; width: 100%; flex-direction: column;
+        align-items: flex-start; gap: 0;
+        padding: 12px 0 16px;
+        border-top: 1px solid var(--border);
+        order: 3;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 11px 0; font-size: 15px; width: 100%; border-bottom: 1px solid var(--border); }
+      .lang-select { margin-top: 12px; width: 100%; padding: 8px 12px; font-size: 14px; }
+      .btn-nav { font-size: 12px; padding: 7px 12px; }
+
+      /* Sections */
+      section { padding: 56px 5vw; }
+
+      /* Hero mobile */
+      .hero { padding: 52px 5vw 44px; min-height: auto; }
+      .hero h1 { font-size: clamp(28px, 9vw, 48px); letter-spacing: -0.5px; }
+      .hero-sub { font-size: 15px; }
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .btn-primary, .btn-secondary { justify-content: center; text-align: center; font-size: 15px; padding: 14px 20px; white-space: normal; }
+      .hero-mockup { max-width: 100%; margin-top: 32px; }
+
+      /* How */
+      .how-steps::before { display: none; }
+
+      /* Pricing */
+      .pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
+
+      /* Logos */
+      .logos-row { gap: 16px; }
+
+      /* CTA Banner */
+      .cta-banner { margin: 0 0 60px; border-radius: 0; padding: 48px 5vw; }
+
+      /* Footer */
+      footer { flex-direction: column; align-items: center; text-align: center; }
+      .footer-links { justify-content: center; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">⚡ <span>Office Automation</span></div>
+  <div class="nav-links" id="navLinks">
+    <a href="#features" data-i18n="nav_features">Features</a>
+    <a href="#how" data-i18n="nav_how">How it works</a>
+    <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+    <a href="#faq" data-i18n="nav_faq">FAQ</a>
+    <select class="lang-select" id="langSelect">
+      <option value="en">🇬🇧 English</option>
+      <option value="pt">🇧🇷 Português</option>
+      <option value="ja">🇯🇵 日本語</option>
+      <option value="de">🇩🇪 Deutsch</option>
+      <option value="fr">🇫🇷 Français</option>
+      <option value="es">🇪🇸 Español</option>
+      <option value="hi">🇮🇳 हिन्दी</option>
+    </select>
+  </div>
+  <div class="nav-right">
+    <a href="https://chromewebstore.google.com" class="btn-nav" data-i18n="nav_cta">Add to Chrome — Free</a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+  <div class="hero-content">
+    <div class="hero-badge">🚀 <span data-i18n="hero_badge">New · Version 0.2.0</span></div>
+    <h1 data-i18n-html="hero_title">Extract <em>any table</em> from any website. Instantly.</h1>
+    <p class="hero-sub" data-i18n="hero_sub">Copy data from any website to Excel, CSV, JSON or PDF — no coding, no copy-pasting. Works on any page with a table.</p>
+    <div class="hero-ctas">
+      <a href="https://chromewebstore.google.com" class="btn-primary" data-i18n="hero_cta1">⬇ Add to Chrome — It's Free</a>
+      <a href="#how" class="btn-secondary" data-i18n="hero_cta2">▶ See how it works</a>
+    </div>
+    <p class="hero-note" data-i18n="hero_note">No credit card required · <strong>Free forever</strong> plan available</p>
+  </div>
+
+  <div class="hero-mockup">
+    <div class="mockup-bar">
+      <div class="mockup-bar-left">
+        <div>
+          <h3>⚡ Office Automation</h3>
+          <p data-i18n="mockup_subtitle">Intelligent table extraction</p>
+        </div>
+      </div>
+      <span class="mockup-badge">FREE</span>
+    </div>
+    <div class="mockup-body">
+      <div class="mockup-tabs">
+        <div class="mockup-tab active" data-i18n="mockup_tab1">Multi-tab</div>
+        <div class="mockup-tab" data-i18n="mockup_tab2">Current tab</div>
+      </div>
+      <div class="mockup-row">
+        <div class="mockup-row-left">
+          <div class="mockup-dot" style="background:#4f46e5"></div>
+          <div>
+            <div class="mockup-row-title">Sales Report Q1 2025</div>
+            <div class="mockup-row-url">reports.internal.com</div>
+          </div>
+        </div>
+        <span class="mockup-chip">4 tables</span>
+      </div>
+      <div class="mockup-row">
+        <div class="mockup-row-left">
+          <div class="mockup-dot" style="background:#22c55e"></div>
+          <div>
+            <div class="mockup-row-title">Competitor pricing page</div>
+            <div class="mockup-row-url">competitor.com/pricing</div>
+          </div>
+        </div>
+        <span class="mockup-chip">2 tables</span>
+      </div>
+      <div class="mockup-row">
+        <div class="mockup-row-left">
+          <div class="mockup-dot" style="background:#f59e0b"></div>
+          <div>
+            <div class="mockup-row-title">Stock data — Yahoo Finance</div>
+            <div class="mockup-row-url">finance.yahoo.com</div>
+          </div>
+        </div>
+        <span class="mockup-chip">7 tables</span>
+      </div>
+      <button class="mockup-btn" data-i18n="mockup_btn">⬇ Export selection to Excel</button>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div class="logos">
+  <p data-i18n="logos_label">Works on any site, including</p>
+  <div class="logos-row">
+    <span class="logo-item">Yahoo Finance</span>
+    <span class="logo-item">Wikipedia</span>
+    <span class="logo-item">Google Sheets</span>
+    <span class="logo-item">Notion</span>
+    <span class="logo-item">Airtable</span>
+    <span class="logo-item">Bloomberg</span>
+    <span class="logo-item">Salesforce</span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-center">
+    <div class="section-label" data-i18n="feat_label">Features</div>
+    <h2 class="section-title" data-i18n="feat_title">Everything you need to extract data fast</h2>
+    <p class="section-sub" data-i18n="feat_sub">One click. No copying. No formatting. Just your data, ready to use.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3 data-i18n="f1_title">Export to Excel</h3>
+      <p data-i18n="f1_desc">Download any HTML table as a perfectly formatted .xlsx file. Multiple tables go into separate sheets automatically.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📋</div>
+      <h3 data-i18n="f2_title">CSV & JSON Export</h3>
+      <p data-i18n="f2_desc">Free plan includes CSV and JSON export. Perfect for developers, analysts and data pipelines.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🗂️</div>
+      <h3 data-i18n="f3_title">Multi-tab Extraction</h3>
+      <p data-i18n="f3_desc">Select multiple Chrome tabs and export all tables from all pages into one Excel file in seconds.</p>
+      <span class="pro-tag">PRO</span>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🖨️</div>
+      <h3 data-i18n="f4_title">Save as PDF</h3>
+      <p data-i18n="f4_desc">Save any web page as a clean, print-ready PDF with one click. No printing dialogs, no hassle.</p>
+      <span class="pro-tag">PRO</span>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📄</div>
+      <h3 data-i18n="f5_title">XML Export</h3>
+      <p data-i18n="f5_desc">Export tables to structured XML format for ERP integrations, legacy systems and enterprise workflows.</p>
+      <span class="pro-tag">PRO</span>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3 data-i18n="f6_title">Instant Detection</h3>
+      <p data-i18n="f6_desc">The extension automatically detects every table on the page — even dynamic or JS-rendered ones.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-center">
+    <div class="section-label" data-i18n="how_label">How it works</div>
+    <h2 class="section-title" data-i18n="how_title">Three steps. That's it.</h2>
+  </div>
+  <div class="how-steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3 data-i18n="step1_title">Install the extension</h3>
+      <p data-i18n="step1_desc">Add Office Automation to Chrome from the Web Store. Takes 10 seconds. No account required for free features.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3 data-i18n="step2_title">Open any page with a table</h3>
+      <p data-i18n="step2_desc">Go to any website. Click the extension icon. It instantly detects and lists all tables on the page.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3 data-i18n="step3_title">Export in one click</h3>
+      <p data-i18n="step3_desc">Choose your format — Excel, CSV, JSON, PDF — and download. Your data is ready to use immediately.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-center">
+    <div class="section-label" data-i18n="price_label">Pricing</div>
+    <h2 class="section-title" data-i18n="price_title">Start free. Upgrade when you're ready.</h2>
+    <p class="section-sub" data-i18n="price_sub">No tricks. Cancel anytime.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-plan" data-i18n="plan_free">Free</div>
+      <div class="price-amount">$0 <span data-i18n="per_month">/month</span></div>
+      <p class="price-desc" data-i18n="free_desc">Perfect for occasional use</p>
+      <ul class="price-features">
+        <li data-i18n="free_f1">CSV export</li>
+        <li data-i18n="free_f2">JSON export</li>
+        <li data-i18n="free_f3">Single-tab extraction</li>
+        <li data-i18n="free_f4">Unlimited pages</li>
+      </ul>
+      <a href="https://chromewebstore.google.com" class="btn-price btn-price-outline" data-i18n="free_btn">Get Started Free</a>
+    </div>
+    <div class="price-card featured">
+      <div class="price-plan" data-i18n="plan_pro">Pro</div>
+      <div class="price-amount">$4 <span data-i18n="per_month">/month</span></div>
+      <p class="price-desc" data-i18n="pro_desc">For power users and professionals</p>
+      <ul class="price-features">
+        <li data-i18n="pro_f1">Everything in Free</li>
+        <li data-i18n="pro_f2">Excel (.xlsx) export</li>
+        <li data-i18n="pro_f3">Multi-tab extraction</li>
+        <li data-i18n="pro_f4">PDF export</li>
+        <li data-i18n="pro_f5">XML export</li>
+        <li data-i18n="pro_f6">Priority support</li>
+      </ul>
+      <a href="https://chromewebstore.google.com" class="btn-price btn-price-white" data-i18n="pro_btn">Upgrade to Pro</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="section-center">
+    <div class="section-label" data-i18n="testi_label">Testimonials</div>
+    <h2 class="section-title" data-i18n="testi_title">Loved by data professionals worldwide</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text" data-i18n="t1_text">"I used to spend 20 minutes copying competitor pricing tables every week. Now it takes 5 seconds. This extension is pure gold."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">A</div>
+        <div><div class="testi-name">Arjun Mehta</div><div class="testi-role">Growth Analyst · Bangalore, IN</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text" data-i18n="t2_text">"Finally a tool that actually works. I extract stock data from multiple tabs every morning and it's flawless. Worth every cent of Pro."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">K</div>
+        <div><div class="testi-name">Kenji Watanabe</div><div class="testi-role">Portfolio Manager · Tokyo, JP</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text" data-i18n="t3_text">"As a researcher I deal with hundreds of Wikipedia and government data tables. This extension cuts my data collection time by 80%."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">S</div>
+        <div><div class="testi-name">Sophie Laurent</div><div class="testi-role">Research Analyst · Paris, FR</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background: var(--bg);">
+  <div class="section-center">
+    <div class="section-label" data-i18n="faq_label">FAQ</div>
+    <h2 class="section-title" data-i18n="faq_title">Frequently asked questions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item open">
+      <div class="faq-q"><span data-i18n="q1">Does it work on every website?</span><span class="faq-icon">+</span></div>
+      <p class="faq-a" data-i18n="a1">Yes. Office Automation works on any website with HTML tables — including dynamic pages rendered by JavaScript. If you can see a table on screen, the extension can extract it.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span data-i18n="q2">Is my data safe? Does it leave my computer?</span><span class="faq-icon">+</span></div>
+      <p class="faq-a" data-i18n="a2">Your table data never leaves your browser. The extraction and export happens entirely on your machine. We only communicate with our servers for authentication and license validation — never your data.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span data-i18n="q3">Can I cancel my Pro subscription anytime?</span><span class="faq-icon">+</span></div>
+      <p class="faq-a" data-i18n="a3">Absolutely. Cancel from your account dashboard in one click. You keep Pro access until the end of the billing period, then automatically switch to the Free plan. No questions asked.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span data-i18n="q4">How many tables can I extract per day?</span><span class="faq-icon">+</span></div>
+      <p class="faq-a" data-i18n="a4">There are no limits on the number of tables or pages. Extract as many as you need, as often as you need.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span data-i18n="q5">Is there a free trial for Pro?</span><span class="faq-icon">+</span></div>
+      <p class="faq-a" data-i18n="a5">The Free plan is permanent and includes CSV/JSON export. You can try all the core functionality before deciding to upgrade to Pro for Excel, PDF and multi-tab features.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2 data-i18n="cta_title">Start extracting tables in 10 seconds.</h2>
+  <p data-i18n="cta_sub">Free plan. No credit card. Install and use immediately.</p>
+  <a href="https://chromewebstore.google.com" class="btn-primary" data-i18n="cta_btn">⬇ Add to Chrome — Free</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <strong>⚡ Office Automation</strong><br />
+    © 2025 · <span data-i18n="footer_rights">All rights reserved</span>
+  </div>
+  <div class="footer-links">
+    <a href="#" data-i18n="footer_privacy">Privacy Policy</a>
+    <a href="#" data-i18n="footer_terms">Terms of Service</a>
+    <a href="mailto:support@corelitfnexus.dev" data-i18n="footer_contact">Contact</a>
+  </div>
+  <div class="footer-corelitfnexus">
+    <span class="corelitfnexus-dot"></span>
+    A product by <a href="https://corelitfnexus.dev" target="_blank">Corelitf Nexus</a>
+    &nbsp;·&nbsp; Building tools for the modern web
+  </div>
+</footer>
+
+<script>
+// =============================================================================
+// i18n translations
+// =============================================================================
+const TRANSLATIONS = {
+  en: {
+    nav_features: "Features", nav_how: "How it works", nav_pricing: "Pricing",
+    nav_faq: "FAQ", nav_cta: "Add to Chrome — Free",
+    hero_badge: "New · Version 0.2.0",
+    hero_title: "Extract <em>any table</em> from any website. Instantly.",
+    hero_sub: "Copy data from any website to Excel, CSV, JSON or PDF — no coding, no copy-pasting. Works on any page with a table.",
+    hero_cta1: "⬇ Add to Chrome — It's Free", hero_cta2: "▶ See how it works",
+    hero_note: "No credit card required · Free forever plan available",
+    mockup_subtitle: "Intelligent table extraction", mockup_tab1: "Multi-tab", mockup_tab2: "Current tab",
+    mockup_btn: "⬇ Export selection to Excel",
+    logos_label: "Works on any site, including",
+    feat_label: "Features", feat_title: "Everything you need to extract data fast",
+    feat_sub: "One click. No copying. No formatting. Just your data, ready to use.",
+    f1_title: "Export to Excel", f1_desc: "Download any HTML table as a perfectly formatted .xlsx file. Multiple tables go into separate sheets automatically.",
+    f2_title: "CSV & JSON Export", f2_desc: "Free plan includes CSV and JSON export. Perfect for developers, analysts and data pipelines.",
+    f3_title: "Multi-tab Extraction", f3_desc: "Select multiple Chrome tabs and export all tables from all pages into one Excel file in seconds.",
+    f4_title: "Save as PDF", f4_desc: "Save any web page as a clean, print-ready PDF with one click. No printing dialogs, no hassle.",
+    f5_title: "XML Export", f5_desc: "Export tables to structured XML format for ERP integrations, legacy systems and enterprise workflows.",
+    f6_title: "Instant Detection", f6_desc: "The extension automatically detects every table on the page — even dynamic or JS-rendered ones.",
+    how_label: "How it works", how_title: "Three steps. That's it.",
+    step1_title: "Install the extension", step1_desc: "Add Office Automation to Chrome from the Web Store. Takes 10 seconds.",
+    step2_title: "Open any page with a table", step2_desc: "Go to any website. Click the extension icon. It instantly detects and lists all tables.",
+    step3_title: "Export in one click", step3_desc: "Choose your format — Excel, CSV, JSON, PDF — and download. Your data is ready immediately.",
+    price_label: "Pricing", price_title: "Start free. Upgrade when you're ready.", price_sub: "No tricks. Cancel anytime.",
+    plan_free: "Free", plan_pro: "Pro", per_month: "/month",
+    free_desc: "Perfect for occasional use", free_f1: "CSV export", free_f2: "JSON export",
+    free_f3: "Single-tab extraction", free_f4: "Unlimited pages", free_btn: "Get Started Free",
+    pro_desc: "For power users and professionals", pro_f1: "Everything in Free", pro_f2: "Excel (.xlsx) export",
+    pro_f3: "Multi-tab extraction", pro_f4: "PDF export", pro_f5: "XML export", pro_f6: "Priority support",
+    pro_btn: "Upgrade to Pro",
+    testi_label: "Testimonials", testi_title: "Loved by data professionals worldwide",
+    t1_text: '"I used to spend 20 minutes copying competitor pricing tables every week. Now it takes 5 seconds. This extension is pure gold."',
+    t2_text: '"Finally a tool that actually works. I extract stock data from multiple tabs every morning and it\'s flawless. Worth every cent of Pro."',
+    t3_text: '"As a researcher I deal with hundreds of data tables. This extension cuts my data collection time by 80%."',
+    faq_label: "FAQ", faq_title: "Frequently asked questions",
+    q1: "Does it work on every website?", a1: "Yes. Works on any website with HTML tables — including dynamic pages rendered by JavaScript.",
+    q2: "Is my data safe?", a2: "Your table data never leaves your browser. Extraction and export happen entirely on your machine.",
+    q3: "Can I cancel anytime?", a3: "Absolutely. Cancel from your dashboard in one click. No questions asked.",
+    q4: "How many tables can I extract per day?", a4: "No limits. Extract as many tables from as many pages as you need.",
+    q5: "Is there a free trial for Pro?", a5: "The Free plan is permanent and includes CSV/JSON export. Upgrade when you need Excel, PDF and multi-tab features.",
+    cta_title: "Start extracting tables in 10 seconds.", cta_sub: "Free plan. No credit card. Install and use immediately.", cta_btn: "⬇ Add to Chrome — Free",
+    footer_rights: "All rights reserved", footer_privacy: "Privacy Policy", footer_terms: "Terms of Service", footer_contact: "Contact"
+  },
+  pt: {
+    nav_features: "Funcionalidades", nav_how: "Como funciona", nav_pricing: "Preços",
+    nav_faq: "FAQ", nav_cta: "Adicionar ao Chrome — Grátis",
+    hero_badge: "Novo · Versão 0.2.0",
+    hero_title: "Extraia <em>qualquer tabela</em> de qualquer site. Instantaneamente.",
+    hero_sub: "Copie dados de qualquer site para Excel, CSV, JSON ou PDF — sem código, sem copiar e colar. Funciona em qualquer página com tabela.",
+    hero_cta1: "⬇ Adicionar ao Chrome — É Grátis", hero_cta2: "▶ Ver como funciona",
+    hero_note: "Sem cartão de crédito · Plano gratuito para sempre disponível",
+    mockup_subtitle: "Extração inteligente de tabelas", mockup_tab1: "Multi-abas", mockup_tab2: "Aba atual",
+    mockup_btn: "⬇ Exportar seleção para Excel",
+    logos_label: "Funciona em qualquer site, incluindo",
+    feat_label: "Funcionalidades", feat_title: "Tudo que você precisa para extrair dados rápido",
+    feat_sub: "Um clique. Sem copiar. Sem formatar. Só seus dados, prontos para usar.",
+    f1_title: "Exportar para Excel", f1_desc: "Baixe qualquer tabela HTML como um arquivo .xlsx perfeitamente formatado.",
+    f2_title: "Exportar CSV e JSON", f2_desc: "O plano gratuito inclui exportação CSV e JSON. Perfeito para desenvolvedores e analistas.",
+    f3_title: "Extração multi-abas", f3_desc: "Selecione várias abas do Chrome e exporte todas as tabelas em um arquivo Excel.",
+    f4_title: "Salvar como PDF", f4_desc: "Salve qualquer página web como PDF com um clique. Sem diálogos de impressão.",
+    f5_title: "Exportar XML", f5_desc: "Exporte tabelas em XML estruturado para integrações com ERPs e sistemas legados.",
+    f6_title: "Detecção instantânea", f6_desc: "A extensão detecta automaticamente todas as tabelas da página — até as dinâmicas.",
+    how_label: "Como funciona", how_title: "Três passos. Só isso.",
+    step1_title: "Instale a extensão", step1_desc: "Adicione ao Chrome pela Web Store. Leva 10 segundos.",
+    step2_title: "Abra qualquer página com tabela", step2_desc: "Acesse qualquer site. Clique no ícone. A extensão detecta todas as tabelas.",
+    step3_title: "Exporte com um clique", step3_desc: "Escolha o formato — Excel, CSV, JSON, PDF — e baixe. Pronto.",
+    price_label: "Preços", price_title: "Comece grátis. Faça upgrade quando quiser.", price_sub: "Sem pegadinhas. Cancele quando quiser.",
+    plan_free: "Gratuito", plan_pro: "Pro", per_month: "/mês",
+    free_desc: "Ideal para uso ocasional", free_f1: "Exportar CSV", free_f2: "Exportar JSON",
+    free_f3: "Extração de aba única", free_f4: "Páginas ilimitadas", free_btn: "Começar Grátis",
+    pro_desc: "Para usuários avançados e profissionais", pro_f1: "Tudo do plano Grátis", pro_f2: "Exportar Excel (.xlsx)",
+    pro_f3: "Extração multi-abas", pro_f4: "Exportar PDF", pro_f5: "Exportar XML", pro_f6: "Suporte prioritário",
+    pro_btn: "Assinar Pro",
+    testi_label: "Depoimentos", testi_title: "Amado por profissionais de dados no mundo todo",
+    t1_text: '"Gastava 20 minutos copiando tabelas de concorrentes toda semana. Agora leva 5 segundos. Essa extensão é ouro puro."',
+    t2_text: '"Finalmente uma ferramenta que funciona de verdade. Extraio dados de ações de várias abas toda manhã. Vale cada centavo do Pro."',
+    t3_text: '"Como pesquisadora, lido com centenas de tabelas de dados. Essa extensão reduziu meu tempo de coleta em 80%."',
+    faq_label: "FAQ", faq_title: "Perguntas frequentes",
+    q1: "Funciona em qualquer site?", a1: "Sim. Funciona em qualquer site com tabelas HTML — inclusive páginas dinâmicas renderizadas por JavaScript.",
+    q2: "Meus dados estão seguros?", a2: "Seus dados nunca saem do seu navegador. A extração e exportação acontecem inteiramente na sua máquina.",
+    q3: "Posso cancelar quando quiser?", a3: "Sim. Cancele pelo painel com um clique. Sem perguntas.",
+    q4: "Quantas tabelas posso extrair por dia?", a4: "Sem limites. Extraia quantas tabelas e páginas precisar.",
+    q5: "Tem período de teste para o Pro?", a5: "O plano gratuito é permanente e inclui CSV/JSON. Faça upgrade quando precisar de Excel, PDF e multi-abas.",
+    cta_title: "Comece a extrair tabelas em 10 segundos.", cta_sub: "Plano gratuito. Sem cartão. Instale e use agora.", cta_btn: "⬇ Adicionar ao Chrome — Grátis",
+    footer_rights: "Todos os direitos reservados", footer_privacy: "Privacidade", footer_terms: "Termos de Uso", footer_contact: "Contato"
+  },
+  ja: {
+    nav_features: "機能", nav_how: "使い方", nav_pricing: "料金",
+    nav_faq: "FAQ", nav_cta: "Chromeに追加（無料）",
+    hero_badge: "新着 · バージョン 0.2.0",
+    hero_title: "あらゆるサイトの<em>テーブルを即座に</em>抽出。",
+    hero_sub: "コードなし、コピペなし。どのサイトのテーブルもExcel、CSV、JSON、PDFに1クリックで変換。",
+    hero_cta1: "⬇ Chromeに追加（無料）", hero_cta2: "▶ 使い方を見る",
+    hero_note: "クレジットカード不要 · 永久無料プランあり",
+    mockup_subtitle: "インテリジェント表抽出", mockup_tab1: "マルチタブ", mockup_tab2: "現在のタブ",
+    mockup_btn: "⬇ 選択をExcelにエクスポート",
+    logos_label: "対応サイト例",
+    feat_label: "機能", feat_title: "データを素早く抽出するために必要なすべて",
+    feat_sub: "1クリック。コピー不要。フォーマット不要。すぐ使えるデータをどうぞ。",
+    f1_title: "Excelエクスポート", f1_desc: "HTMLテーブルを完璧にフォーマットされた.xlsxファイルとしてダウンロード。",
+    f2_title: "CSV・JSONエクスポート", f2_desc: "無料プランでCSV・JSONエクスポートが可能。開発者やアナリストに最適。",
+    f3_title: "マルチタブ抽出", f3_desc: "複数のChromeタブを選択し、すべてのテーブルを一つのExcelにエクスポート。",
+    f4_title: "PDFとして保存", f4_desc: "ウェブページを1クリックでクリーンなPDFに保存。印刷ダイアログなし。",
+    f5_title: "XMLエクスポート", f5_desc: "ERP連携やレガシーシステム向けに構造化XMLでエクスポート。",
+    f6_title: "即時検出", f6_desc: "動的ページのテーブルも含め、ページ上のすべてのテーブルを自動検出。",
+    how_label: "使い方", how_title: "3ステップ、それだけ。",
+    step1_title: "拡張機能をインストール", step1_desc: "ウェブストアからChromeに追加。10秒で完了。",
+    step2_title: "テーブルのあるページを開く", step2_desc: "任意のサイトへ。アイコンをクリック。テーブルが即座に検出されます。",
+    step3_title: "1クリックでエクスポート", step3_desc: "フォーマットを選択してダウンロード。すぐ使えます。",
+    price_label: "料金", price_title: "無料ではじめよう。準備ができたらアップグレード。", price_sub: "トリックなし。いつでもキャンセル可能。",
+    plan_free: "無料", plan_pro: "Pro", per_month: "/月",
+    free_desc: "たまに使う方に最適", free_f1: "CSVエクスポート", free_f2: "JSONエクスポート",
+    free_f3: "シングルタブ抽出", free_f4: "無制限ページ", free_btn: "無料ではじめる",
+    pro_desc: "パワーユーザーとプロフェッショナル向け", pro_f1: "無料プランのすべて", pro_f2: "Excelエクスポート",
+    pro_f3: "マルチタブ抽出", pro_f4: "PDFエクスポート", pro_f5: "XMLエクスポート", pro_f6: "優先サポート",
+    pro_btn: "Proにアップグレード",
+    testi_label: "ユーザーの声", testi_title: "世界中のデータプロが愛用",
+    t1_text: '"毎週20分かけていた競合価格表のコピーが5秒になりました。この拡張機能は最高です。"',
+    t2_text: '"毎朝複数タブから株価データを抽出しています。完璧に動作します。Proの価値は十分あります。"',
+    t3_text: '"研究者として何百もの表を扱いますが、データ収集時間が80%削減されました。"',
+    faq_label: "よくある質問", faq_title: "よくある質問",
+    q1: "すべてのウェブサイトで動作しますか？", a1: "はい。JavaScript動的ページも含め、HTMLテーブルがあるすべてのサイトで動作します。",
+    q2: "データは安全ですか？", a2: "テーブルデータはブラウザの外に出ません。抽出・エクスポートはすべてあなたのマシン上で実行されます。",
+    q3: "いつでもキャンセルできますか？", a3: "はい。ダッシュボードから1クリックでキャンセルできます。",
+    q4: "1日に何件抽出できますか？", a4: "制限なし。必要なだけ抽出できます。",
+    q5: "Proの無料トライアルはありますか？", a5: "無料プランは永続的でCSV/JSONエクスポートが含まれます。Excel・PDF・マルチタブが必要になったらアップグレードしてください。",
+    cta_title: "10秒でテーブル抽出を始めよう。", cta_sub: "無料プラン。クレジットカード不要。今すぐインストール。", cta_btn: "⬇ Chromeに追加（無料）",
+    footer_rights: "All rights reserved", footer_privacy: "プライバシーポリシー", footer_terms: "利用規約", footer_contact: "お問い合わせ"
+  },
+  de: {
+    nav_features: "Funktionen", nav_how: "Wie es funktioniert", nav_pricing: "Preise",
+    nav_faq: "FAQ", nav_cta: "Zu Chrome hinzufügen — Kostenlos",
+    hero_title: "<em>Beliebige Tabellen</em> von beliebigen Websites extrahieren. Sofort.",
+    hero_sub: "Daten von jeder Website als Excel, CSV, JSON oder PDF — ohne Code, ohne Kopieren und Einfügen.",
+    hero_cta1: "⬇ Zu Chrome hinzufügen — Kostenlos", hero_cta2: "▶ So funktioniert's",
+    cta_title: "Tabellen in 10 Sekunden extrahieren.", cta_btn: "⬇ Zu Chrome hinzufügen — Kostenlos",
+    free_btn: "Kostenlos starten", pro_btn: "Auf Pro upgraden", per_month: "/Monat"
+  },
+  fr: {
+    nav_features: "Fonctionnalités", nav_how: "Comment ça marche", nav_pricing: "Tarifs",
+    nav_faq: "FAQ", nav_cta: "Ajouter à Chrome — Gratuit",
+    hero_title: "Extrayez <em>n'importe quel tableau</em> de n'importe quel site. Instantanément.",
+    hero_sub: "Copiez les données de n'importe quel site vers Excel, CSV, JSON ou PDF — sans code, sans copier-coller.",
+    hero_cta1: "⬇ Ajouter à Chrome — Gratuit", hero_cta2: "▶ Voir comment ça marche",
+    cta_title: "Commencez à extraire des tableaux en 10 secondes.", cta_btn: "⬇ Ajouter à Chrome — Gratuit",
+    free_btn: "Commencer gratuitement", pro_btn: "Passer à Pro", per_month: "/mois"
+  },
+  es: {
+    nav_features: "Funciones", nav_how: "Cómo funciona", nav_pricing: "Precios",
+    nav_faq: "FAQ", nav_cta: "Añadir a Chrome — Gratis",
+    hero_title: "Extrae <em>cualquier tabla</em> de cualquier sitio. Al instante.",
+    hero_sub: "Copia datos de cualquier sitio web a Excel, CSV, JSON o PDF — sin código, sin copiar y pegar.",
+    hero_cta1: "⬇ Añadir a Chrome — Gratis", hero_cta2: "▶ Ver cómo funciona",
+    cta_title: "Empieza a extraer tablas en 10 segundos.", cta_btn: "⬇ Añadir a Chrome — Gratis",
+    free_btn: "Empezar gratis", pro_btn: "Actualizar a Pro", per_month: "/mes"
+  },
+  hi: {
+    nav_features: "विशेषताएं", nav_how: "कैसे काम करता है", nav_pricing: "मूल्य",
+    nav_faq: "FAQ", nav_cta: "Chrome में जोड़ें — मुफ़्त",
+    hero_title: "किसी भी वेबसाइट से <em>कोई भी टेबल</em> निकालें। तुरंत।",
+    hero_sub: "किसी भी वेबसाइट से Excel, CSV, JSON या PDF में डेटा कॉपी करें — बिना कोडिंग के।",
+    hero_cta1: "⬇ Chrome में जोड़ें — मुफ़्त", hero_cta2: "▶ देखें कैसे काम करता है",
+    cta_title: "10 सेकंड में टेबल निकालना शुरू करें।", cta_btn: "⬇ Chrome में जोड़ें — मुफ़्त",
+    free_btn: "मुफ़्त शुरू करें", pro_btn: "Pro में अपग्रेड करें", per_month: "/माह"
+  }
+};
+
+let currentLang = 'en';
+
+function applyTranslations(lang) {
+  const t = { ...TRANSLATIONS.en, ...(TRANSLATIONS[lang] || {}) };
+  currentLang = lang;
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) el.textContent = t[key];
+  });
+
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key]) el.innerHTML = t[key];
+  });
+
+  document.documentElement.lang = lang;
+}
+
+// Language selector
+document.getElementById('langSelect').addEventListener('change', e => {
+  applyTranslations(e.target.value);
+  localStorage.setItem('oa_lang', e.target.value);
+});
+
+// Auto-detect language
+const savedLang = localStorage.getItem('oa_lang');
+const browserLang = navigator.language.split('-')[0];
+const detectedLang = savedLang || (['pt','ja','de','fr','es','hi'].includes(browserLang) ? browserLang : 'en');
+document.getElementById('langSelect').value = detectedLang;
+applyTranslations(detectedLang);
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('navLinks').classList.remove('open');
+    document.getElementById('navHamburger').classList.remove('open');
+  });
+});
+
+// Mobile hamburger menu
+document.getElementById('navHamburger').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+  document.getElementById('navHamburger').classList.toggle('open');
+});
+</script>
+
+</body>
+</html>
