@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Future of Urban Mobility — Nexus Journal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:wght@300;400;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1612;
+      --paper: #f9f6f0;
+      --paper2: #f2ede4;
+      --accent: #b5451b;
+      --muted: #7a7060;
+      --border: #d8d0c0;
+      --col: 680px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Source Serif 4', Georgia, serif;
+      line-height: 1.8;
+      padding: 0 24px 80px;
+    }
+
+    /* ── MASTHEAD ── */
+    .masthead {
+      border-bottom: 3px double var(--ink);
+      padding: 28px 0 16px;
+      text-align: center;
+      max-width: var(--col);
+      margin: 0 auto 40px;
+    }
+
+    .masthead .journal-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .masthead .issue {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ── ARTICLE ── */
+    article {
+      max-width: var(--col);
+      margin: 0 auto;
+    }
+
+    .category {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+    }
+
+    .deck {
+      font-size: 19px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 28px;
+      border-left: 3px solid var(--accent);
+      padding-left: 18px;
+    }
+
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 36px;
+    }
+
+    .byline .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--paper);
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .byline-text { font-size: 13px; }
+    .byline-text strong { display: block; font-weight: 600; }
+    .byline-text span { color: var(--muted); font-family: 'DM Mono', monospace; font-size: 11px; }
+
+    /* ── BODY CONTENT ── */
+    p { margin-bottom: 22px; font-size: 17px; }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      margin: 44px 0 16px;
+      padding-top: 44px;
+      border-top: 1px solid var(--border);
+    }
+
+    h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-style: italic;
+      margin: 32px 0 12px;
+      color: var(--accent);
+    }
+
+    blockquote {
+      background: var(--paper2);
+      border-left: 4px solid var(--accent);
+      margin: 36px 0;
+      padding: 24px 28px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 20px;
+      line-height: 1.55;
+      color: #3a342a;
+    }
+
+    blockquote cite {
+      display: block;
+      margin-top: 12px;
+      font-family: 'DM Mono', monospace;
+      font-style: normal;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--muted);
+    }
+
+    /* ── DATA TABLE ── */
+    .data-section {
+      background: var(--paper2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px;
+      margin: 36px 0;
+    }
+
+    .data-section h4 {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    thead th {
+      text-align: left;
+      padding: 8px 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 2px solid var(--ink);
+    }
+
+    tbody td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+
+    .num {
+      font-family: 'DM Mono', monospace;
+      text-align: right;
+    }
+
+    .trend-up   { color: #2e7d32; font-weight: 600; }
+    .trend-down { color: #c62828; font-weight: 600; }
+
+    /* ── KEY STATS ── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin: 36px 0;
+    }
+
+    .stat {
+      background: var(--paper);
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .stat .value {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+
+    .stat .label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 40px 0;
+    }
+
+    .pull-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 3.5vw, 30px);
+      line-height: 1.4;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    /* ── TAGS ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .tag {
+      background: var(--paper2);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      border-radius: 2px;
+    }
+
+    .footer-rule {
+      max-width: var(--col);
+      margin: 48px auto 0;
+      border: none;
+      border-top: 3px double var(--ink);
+      padding-top: 16px;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="masthead">
+    <div class="journal-name">Nexus Journal of Urban Studies</div>
+    <div class="issue">Vol. 14 · Issue 3 · June 2026</div>
+  </div>
+
+  <article>
+
+    <div class="category">Infrastructure &amp; Mobility</div>
+
+    <h1>The Shifting Landscape of Urban Transportation Networks</h1>
+
+    <p class="deck">
+      As metropolitan areas continue to expand, city planners and researchers are rethinking the frameworks that govern how people and goods move — balancing efficiency, equity, and sustainability.
+    </p>
+
+    <div class="byline">
+      <div class="avatar">E</div>
+      <div class="byline-text">
+        <strong>Eleanor Voss</strong>
+        <span>Senior Fellow, Institute for Urban Policy · 12 min read</span>
+      </div>
+    </div>
+
+    <p>
+      Over the past two decades, the way cities approach transportation infrastructure has undergone a fundamental transformation. Where once the automobile reigned as the unchallenged centerpiece of urban planning, a more pluralistic vision has emerged — one that seeks to integrate rail, cycling, pedestrian corridors, and emerging mobility services into a coherent, resilient network.
+    </p>
+
+    <p>
+      This shift has not been uniform. Cities in different regions face radically different starting points: population density, existing infrastructure, fiscal constraints, and political will all play decisive roles in determining which solutions take root and which remain aspirational. Nevertheless, certain patterns have emerged from the data that merit close examination.
+    </p>
+
+    <div class="stats-grid">
+      <div class="stat">
+        <span class="value">68%</span>
+        <span class="label">of surveyed cities increased transit investment since 2020</span>
+      </div>
+      <div class="stat">
+        <span class="value">3.4×</span>
+        <span class="label">growth in shared mobility users over five years</span>
+      </div>
+      <div class="stat">
+        <span class="value">41%</span>
+        <span class="label">reduction in peak congestion in pilot corridors</span>
+      </div>
+    </div>
+
+    <h2>Rethinking the Role of Public Transit</h2>
+
+    <p>
+      Public transit systems in dense urban environments have historically struggled with the so-called "last mile" problem — the gap between a transit stop and a traveler's final destination. New approaches combining fixed-route service with on-demand feeder networks have shown considerable promise in bridging this gap without requiring prohibitively expensive infrastructure expansion.
+    </p>
+
+    <p>
+      The evidence from pilot programs across multiple metropolitan regions suggests that when reliable, frequent transit is paired with accessible active transportation options — particularly protected cycling lanes and well-maintained pedestrian infrastructure — overall ridership increases substantially, even among populations that previously depended exclusively on private vehicles.
+    </p>
+
+    <blockquote>
+      "The most successful mobility transitions we have observed are not the result of any single technology or policy, but of patient, systemic integration across multiple modes and governance levels."
+      <cite>— Dr. Marcus Adelheid, Centre for Metropolitan Research, 2025</cite>
+    </blockquote>
+
+    <h3>Modal Share Trends Across Sample Cities</h3>
+
+    <div class="data-section">
+      <h4>Table 1 — Modal Share by Transportation Type (2021–2025)</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>City</th>
+            <th>Private Vehicle</th>
+            <th>Public Transit</th>
+            <th>Cycling</th>
+            <th>Walking</th>
+            <th>Change (Transit)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Aldenveld</td>
+            <td class="num">38%</td>
+            <td class="num">31%</td>
+            <td class="num">18%</td>
+            <td class="num">13%</td>
+            <td class="num trend-up">+6.2%</td>
+          </tr>
+          <tr>
+            <td>Creston Bay</td>
+            <td class="num">54%</td>
+            <td class="num">22%</td>
+            <td class="num">9%</td>
+            <td class="num">15%</td>
+            <td class="num trend-up">+3.8%</td>
+          </tr>
+          <tr>
+            <td>Morvaine</td>
+            <td class="num">29%</td>
+            <td class="num">45%</td>
+            <td class="num">14%</td>
+            <td class="num">12%</td>
+            <td class="num trend-up">+8.1%</td>
+          </tr>
+          <tr>
+            <td>Halstead North</td>
+            <td class="num">61%</td>
+            <td class="num">18%</td>
+            <td class="num">5%</td>
+            <td class="num">16%</td>
+            <td class="num trend-down">−1.2%</td>
+          </tr>
+          <tr>
+            <td>Rivergate</td>
+            <td class="num">44%</td>
+            <td class="num">27%</td>
+            <td class="num">11%</td>
+            <td class="num">18%</td>
+            <td class="num trend-up">+4.5%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      The data presented above reflects a broader trend: cities that have invested consistently in transit quality and frequency tend to see modal shift away from private vehicles, while those that have allowed service quality to stagnate often experience the reverse. Notably, Halstead North's decline correlates with a period of reduced operating budgets and service cuts implemented between 2022 and 2024.
+    </p>
+
+    <h2>Infrastructure Investment and Equity Outcomes</h2>
+
+    <p>
+      A persistent critique of large-scale transit infrastructure projects is their tendency to concentrate benefits in already well-served, higher-income neighborhoods while underserving peripheral communities where transit dependency is highest. This critique has gained renewed urgency as cities plan significant expansions of rail and bus rapid transit networks.
+    </p>
+
+    <p>
+      Research from several longitudinal studies suggests that the equity outcomes of transit investment are highly sensitive to route design decisions made during the planning phase — decisions that are often invisible to the public but determine who ultimately benefits from new infrastructure over its operational lifetime.
+    </p>
+
+    <div class="pull-quote">
+      <p>The geography of access is, ultimately, the geography of opportunity.</p>
+    </div>
+
+    <h3>Annual Infrastructure Spending by Category</h3>
+
+    <div class="data-section">
+      <h4>Table 2 — Public Transportation Budget Allocation (USD Millions, 2023–2025)</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th class="num">2023</th>
+            <th class="num">2024</th>
+            <th class="num">2025 (est.)</th>
+            <th class="num">3-Yr Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rail Network Expansion</td>
+            <td class="num">1,240</td>
+            <td class="num">1,480</td>
+            <td class="num">1,710</td>
+            <td class="num trend-up">+37.9%</td>
+          </tr>
+          <tr>
+            <td>Bus Rapid Transit</td>
+            <td class="num">380</td>
+            <td class="num">420</td>
+            <td class="num">510</td>
+            <td class="num trend-up">+34.2%</td>
+          </tr>
+          <tr>
+            <td>Active Transport Infrastructure</td>
+            <td class="num">155</td>
+            <td class="num">198</td>
+            <td class="num">260</td>
+            <td class="num trend-up">+67.7%</td>
+          </tr>
+          <tr>
+            <td>Fleet Electrification</td>
+            <td class="num">290</td>
+            <td class="num">440</td>
+            <td class="num">620</td>
+            <td class="num trend-up">+113.8%</td>
+          </tr>
+          <tr>
+            <td>Maintenance &amp; Operations</td>
+            <td class="num">870</td>
+            <td class="num">840</td>
+            <td class="num">890</td>
+            <td class="num trend-up">+2.3%</td>
+          </tr>
+          <tr>
+            <td>Demand Management Programs</td>
+            <td class="num">95</td>
+            <td class="num">130</td>
+            <td class="num">175</td>
+            <td class="num trend-up">+84.2%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      Fleet electrification stands out as the fastest-growing expenditure category, reflecting both declining battery costs and the increasing urgency of decarbonizing public transportation — which accounts for a meaningful share of municipal greenhouse gas emissions in car-dependent metros. The comparatively modest growth in maintenance spending, however, raises questions about long-term asset management capacity as fleets expand.
+    </p>
+
+    <h2>Looking Ahead: Integration as the Central Challenge</h2>
+
+    <p>
+      The coming decade will likely be defined less by the introduction of novel transportation technologies — though these will certainly continue to emerge — and more by the challenge of integrating existing and new systems into a seamless user experience. Journey planning, ticketing, real-time information, and physical interchange design all remain areas where fragmentation imposes significant costs on travelers and undermines the competitiveness of public transit relative to the private automobile.
+    </p>
+
+    <p>
+      Cities that invest in the connective tissue of their mobility ecosystems — the data standards, governance frameworks, and physical infrastructure that enable different modes to work together rather than in parallel — are likely to see disproportionate returns on their investments in individual systems.
+    </p>
+
+    <p>
+      The evidence, taken as a whole, points toward a future where urban mobility is defined not by any single dominant mode, but by the quality and intelligence of the connections between them.
+    </p>
+
+    <div class="tags">
+      <span class="tag">urban planning</span>
+      <span class="tag">public transit</span>
+      <span class="tag">infrastructure</span>
+      <span class="tag">mobility</span>
+      <span class="tag">equity</span>
+      <span class="tag">electrification</span>
+      <span class="tag">data</span>
+    </div>
+
+  </article>
+
+  <p class="footer-rule">© 2026 Nexus Journal of Urban Studies · All rights reserved</p>
+
+</body>
+</html>
