@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Clientes</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --border: #2a2d3a;
+      --accent: #00e5a0;
+      --text: #e8eaf0;
+      --muted: #6b7080;
+      --danger: #ff4d6d;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      padding: 40px 32px;
+    }
+
+    header {
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+
+    header h1 span {
+      color: var(--accent);
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 13px;
+      font-family: 'DM Mono', monospace;
+      margin-bottom: 3px;
+    }
+
+    .badge {
+      background: var(--accent);
+      color: #0f1117;
+      font-size: 11px;
+      font-weight: 600;
+      font-family: 'DM Mono', monospace;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-left: auto;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    thead tr {
+      background: var(--surface);
+    }
+
+    thead th {
+      text-align: left;
+      padding: 14px 16px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+
+    tbody tr:hover { background: var(--surface); }
+
+    tbody td {
+      padding: 13px 16px;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    tbody td:first-child {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .status {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-family: 'DM Mono', monospace;
+      font-weight: 500;
+    }
+
+    .status.ativo   { background: rgba(0,229,160,0.12); color: var(--accent); }
+    .status.inativo { background: rgba(255,77,109,0.12); color: var(--danger); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <p>portal / cadastro</p>
+    <h1>Tab. <span>Clientes</span></h1>
+  </div>
+  <span class="badge">12 registros</span>
+</header>
+
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Telefone</th>
+        <th>Cidade</th>
+        <th>Estado</th>
+        <th>Cadastro</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>001</td><td>Ana Paula Ferreira</td><td>ana.ferreira@email.com</td><td>(11) 98765-4321</td><td>São Paulo</td><td>SP</td><td>2023-01-15</td><td><span class="status ativo">Ativo</span></td></tr>
+      <tr><td>002</td><td>Bruno Henrique Lima</td><td>bruno.lima@email.com</td><td>(21) 97654-3210</td><td>Rio de Janeiro</td><td>RJ</td><td>2023-02-08</td><td><span class="status ativo">Ativo</span></td></tr>
+      <tr><td>003</td><td>Carla Souza Mendes</td><td>carla.mendes@email.com</td><td>(31) 96543-2109</td><td>Belo Horizonte</td><td>MG</td><td>2023-03-22</td><td><span class="status inativo">Inativo</span></td></tr>
+      <tr><td>004</td><td>Diego Rocha Alves</td><td>diego.alves@email.com</td><td>(41) 95432-1098</td><td>Curitiba</td><td>PR</td><td>2023-04-10</td><td><span class="status ativo">Ativo</span></td></tr>
+      <tr><td>005</td><td>Elaine Costa Pinto</td><td>elaine.pinto@email.com</td><td>(51) 94321-0987</td><td>Porto Alegre</td><td>RS</td><td>2023-05-18</td><td><span class="status ativo">Ativo</span></td></tr>
+      <tr><td>006</td><td>Fábio Martins Cruz</td><td>fabio.cruz@email.com</td><td>(61) 93210-9876</td><td>Brasília</td><td>DF</td><td>2023-06-30</td><td><span class="status inativo">Inativo</span></td></tr>
+      <tr><td>007</td><td>Gabriela Nunes Reis</td><td>gabi.reis@email.com</td><td>(71) 92109-8765</td><td>Salvador</td><td>BA</td><td>2023-07-14</td><td><span class="status ativo">Ativo</span></td></tr>
+      <tr><td>008</td><td>Henrique Dias Moura</td><td>henrique.moura@email.com</td><td>(81) 91098-7654</td><td>Recife</td><td>PE</td><td>2023-08-02</td><td><span class="status ativo">Ativo</span></td></tr>
+      <tr><td>009</td><td>Isabela Gomes Vieira</td><td>isa.vieira@email.com</td><td>(85) 90987-6543</td><td>Fortaleza</td><td>CE</td><td>2023-09-19</td><td><span class="status inativo">Inativo</span></td></tr>
+      <tr><td>010</td><td>João Pedro Santos</td><td>joao.santos@email.com</td><td>(92) 89876-5432</td><td>Manaus</td><td>AM</td><td>2023-10-05</td><td><span class="status ativo">Ativo</span></td></tr>
+      <tr><td>011</td><td>Karen Oliveira Teles</td><td>karen.teles@email.com</td><td>(62) 88765-4321</td><td>Goiânia</td><td>GO</td><td>2023-11-23</td><td><span class="status ativo">Ativo</span></td></tr>
+      <tr><td>012</td><td>Lucas Barros Fonseca</td><td>lucas.fonseca@email.com</td><td>(27) 87654-3210</td><td>Vitória</td><td>ES</td><td>2023-12-11</td><td><span class="status ativo">Ativo</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
