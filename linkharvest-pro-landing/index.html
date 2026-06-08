@@ -910,6 +910,44 @@ document.getElementById('navHamburger').addEventListener('click', () => {
   document.getElementById('navLinks').classList.toggle('open');
   document.getElementById('navHamburger').classList.toggle('open');
 });
+
+// Track clicks on every button/link that sends users to the Chrome Web Store.
+// This lets you measure: Landing Page -> Chrome Web Store clicks.
+document.querySelectorAll('a[href*="chromewebstore.google.com"]').forEach((btn, index) => {
+
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const url = this.href;
+    const buttonText = (this.textContent || '').trim();
+    const buttonId = this.id || `chrome_store_button_${index + 1}`;
+
+    let redirected = false;
+
+    const redirectToChromeStore = () => {
+      if (redirected) return;
+      redirected = true;
+      window.location.href = url;
+    };
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'chrome_store_click', {
+        extension: 'LinkHarvest Pro',
+        button_id: buttonId,
+        button_text: buttonText,
+        page_location: window.location.href,
+        event_callback: redirectToChromeStore,
+        event_timeout: 800
+      });
+
+      // Fallback: if Google Analytics does not respond quickly, redirect anyway.
+      setTimeout(redirectToChromeStore, 900);
+    } else {
+      redirectToChromeStore();
+    }
+  });
+
+});
 </script>
 
 </body>
