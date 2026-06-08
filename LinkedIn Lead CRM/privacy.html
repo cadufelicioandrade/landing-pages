@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidade – LinkedIn Lead CRM</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #0A66C2;
+    --amber: #F5A623;
+    --bg: #080C12;
+    --bg2: #0D1117;
+    --surface: #151D28;
+    --border: rgba(255,255,255,0.08);
+    --text: #E8EDF2;
+    --text-dim: #8B9BB0;
+    --text-muted: #4A5568;
+    --green: #22C55E;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 64px;
+    background: rgba(8,12,18,0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo-icon {
+    width: 34px; height: 34px; border-radius: 8px;
+    background: var(--blue);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .nav-logo-text { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; color: var(--text); }
+  .nav-logo-text span { color: var(--blue); }
+  .nav-back {
+    color: var(--text-dim); text-decoration: none; font-size: 14px;
+    display: flex; align-items: center; gap: 6px;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--text); }
+
+  .page-header {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 5% 50px;
+    text-align: center;
+  }
+  .page-header .eyebrow {
+    display: inline-block;
+    font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--blue);
+    margin-bottom: 14px;
+  }
+  .page-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .page-header p { color: var(--text-dim); font-size: 15px; }
+
+  .content-wrap {
+    max-width: 780px; margin: 0 auto;
+    padding: 60px 5%;
+  }
+
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px 28px;
+    margin-bottom: 48px;
+  }
+  .toc-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px; font-weight: 600;
+    color: var(--text-dim); text-transform: uppercase;
+    letter-spacing: 0.06em; margin-bottom: 14px;
+  }
+  .toc ol { padding-left: 18px; display: flex; flex-direction: column; gap: 8px; }
+  .toc a { color: var(--blue); text-decoration: none; font-size: 14px; }
+  .toc a:hover { text-decoration: underline; }
+
+  .priv-section { margin-bottom: 48px; }
+  .priv-section h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--text);
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .priv-section h2 .num {
+    background: var(--blue); color: white;
+    font-size: 12px; font-weight: 700;
+    width: 26px; height: 26px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .priv-section p { color: var(--text-dim); margin-bottom: 14px; font-size: 15px; }
+  .priv-section ul, .priv-section ol {
+    padding-left: 20px; color: var(--text-dim);
+    font-size: 15px; display: flex; flex-direction: column; gap: 8px;
+    margin-bottom: 14px;
+  }
+  .priv-section li { line-height: 1.65; }
+  .priv-section strong { color: var(--text); }
+
+  .highlight-box {
+    background: var(--surface);
+    border-left: 3px solid var(--green);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px; margin: 20px 0;
+    font-size: 14px; color: var(--text-dim);
+  }
+  .highlight-box strong { color: var(--green); }
+
+  .warn-box {
+    background: rgba(245,166,35,0.08);
+    border-left: 3px solid var(--amber);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px; margin: 20px 0;
+    font-size: 14px; color: var(--text-dim);
+  }
+  .warn-box strong { color: var(--amber); }
+
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px;
+    margin-top: 48px; text-align: center;
+  }
+  .contact-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem; font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .contact-card p { color: var(--text-dim); font-size: 14px; margin-bottom: 16px; }
+  .contact-card a {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--blue); color: white;
+    text-decoration: none; padding: 10px 22px;
+    border-radius: 8px; font-weight: 600; font-size: 14px;
+    transition: background 0.2s;
+  }
+  .contact-card a:hover { background: #1a7fd4; }
+
+  footer {
+    background: var(--bg2); border-top: 1px solid var(--border);
+    padding: 32px 5%; text-align: center;
+  }
+  .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 12px; }
+  .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; }
+  .footer-links a:hover { color: var(--text); }
+  .footer-copy { font-size: 12px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-icon">🔗</div>
+    <span class="nav-logo-text">LinkedIn <span>Lead CRM</span></span>
+  </a>
+  <a class="nav-back" href="index.html">← Voltar ao início</a>
+</nav>
+
+<div class="page-header">
+  <span class="eyebrow">Legal</span>
+  <h1>Política de Privacidade</h1>
+  <p>Última atualização: 08 de junho de 2026</p>
+</div>
+
+<div class="content-wrap">
+
+  <div class="highlight-box">
+    <strong>Resumo em uma linha:</strong> O LinkedIn Lead CRM não coleta, transmite nem armazena seus dados em nenhum servidor externo. Tudo fica no seu próprio navegador.
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Índice</div>
+    <ol>
+      <li><a href="#s1">Quem somos</a></li>
+      <li><a href="#s2">Quais dados a extensão acessa</a></li>
+      <li><a href="#s3">Como os dados são armazenados</a></li>
+      <li><a href="#s4">O que não fazemos com seus dados</a></li>
+      <li><a href="#s5">Permissões do Chrome solicitadas</a></li>
+      <li><a href="#s6">Dados de pagamento (plano Pro)</a></li>
+      <li><a href="#s7">Cookies e rastreamento</a></li>
+      <li><a href="#s8">Seus direitos (LGPD)</a></li>
+      <li><a href="#s9">Alterações nesta política</a></li>
+      <li><a href="#s10">Contato</a></li>
+    </ol>
+  </div>
+
+  <div class="priv-section" id="s1">
+    <h2><span class="num">1</span> Quem somos</h2>
+    <p>
+      O <strong>LinkedIn Lead CRM</strong> é uma extensão para Google Chrome desenvolvida e mantida por 
+      <strong>Kodaru Systems</strong>, empresa individual sediada no Brasil. 
+      O responsável pelo tratamento de dados é o desenvolvedor da extensão, 
+      contatável pelo e-mail abaixo.
+    </p>
+    <p>
+      Esta extensão <strong>não é afiliada, endossada, patrocinada ou associada ao LinkedIn Corporation</strong> 
+      de nenhuma forma. LinkedIn é uma marca registrada de seus respectivos proprietários.
+    </p>
+  </div>
+
+  <div class="priv-section" id="s2">
+    <h2><span class="num">2</span> Quais dados a extensão acessa</h2>
+    <p>Quando você está em um perfil do LinkedIn e abre o popup da extensão, ela lê os seguintes dados <strong>diretamente do DOM da página</strong>:</p>
+    <ul>
+      <li>Nome completo do perfil visitado</li>
+      <li>Cargo (headline)</li>
+      <li>Empresa atual</li>
+      <li>Localização</li>
+      <li>URL do perfil no LinkedIn</li>
+    </ul>
+    <p>Além disso, você pode adicionar manualmente:</p>
+    <ul>
+      <li>Tags (ex: Prospect, Lead Quente)</li>
+      <li>Status do contato</li>
+      <li>Notas pessoais</li>
+      <li>Próxima ação e data de follow-up</li>
+    </ul>
+    <div class="highlight-box">
+      <strong>Importante:</strong> Esses dados são capturados localmente no seu navegador. Eles não são enviados a nenhum servidor da Kodaru Systems nem a terceiros.
+    </div>
+  </div>
+
+  <div class="priv-section" id="s3">
+    <h2><span class="num">3</span> Como os dados são armazenados</h2>
+    <p>
+      Todos os leads, templates de mensagem e configurações são armazenados exclusivamente via 
+      <strong>chrome.storage.local</strong> — o mecanismo nativo de armazenamento local do Google Chrome.
+    </p>
+    <p>Isso significa que:</p>
+    <ul>
+      <li>Os dados ficam <strong>somente no seu dispositivo</strong>, dentro do seu perfil do Chrome</li>
+      <li>Não há banco de dados externo, nuvem proprietária ou servidor da Kodaru Systems envolvido</li>
+      <li>Se você desinstalar a extensão, os dados são removidos automaticamente pelo Chrome</li>
+      <li>A função de <strong>Backup</strong> (Config → Exportar backup) gera um arquivo JSON no seu computador — você controla onde ele fica</li>
+    </ul>
+  </div>
+
+  <div class="priv-section" id="s4">
+    <h2><span class="num">4</span> O que não fazemos com seus dados</h2>
+    <ul>
+      <li>❌ Não coletamos seus dados em servidores próprios</li>
+      <li>❌ Não vendemos, alugamos ou compartilhamos dados com terceiros</li>
+      <li>❌ Não rastreamos sua navegação fora do contexto da extensão</li>
+      <li>❌ Não lemos mensagens privadas, conexões ou outros dados da sua conta LinkedIn</li>
+      <li>❌ Não utilizamos seus dados para treinamento de IA ou qualquer finalidade além do funcionamento da extensão</li>
+    </ul>
+  </div>
+
+  <div class="priv-section" id="s5">
+    <h2><span class="num">5</span> Permissões do Chrome solicitadas</h2>
+    <p>A extensão solicita as seguintes permissões ao Chrome, com as respectivas finalidades:</p>
+    <ul>
+      <li>
+        <strong>activeTab</strong> — permite ler o conteúdo da aba atualmente aberta 
+        (necessário para extrair dados do perfil do LinkedIn)
+      </li>
+      <li>
+        <strong>storage</strong> — permite salvar leads e configurações localmente 
+        via chrome.storage.local
+      </li>
+      <li>
+        <strong>scripting</strong> — permite executar o script de extração na página do LinkedIn 
+        quando você abre o popup
+      </li>
+    </ul>
+    <div class="warn-box">
+      <strong>Atenção:</strong> A permissão <em>activeTab</em> é ativada apenas quando você clica no ícone da extensão. A extensão não executa código em segundo plano em outras abas.
+    </div>
+  </div>
+
+  <div class="priv-section" id="s6">
+    <h2><span class="num">6</span> Dados de pagamento (plano Pro)</h2>
+    <p>
+      O upgrade para o plano Pro é processado por uma plataforma de pagamento terceirizada 
+      (como Stripe, Hotmart ou similar). A Kodaru Systems <strong>não armazena dados de cartão de crédito</strong> 
+      ou informações financeiras em nenhuma hipótese.
+    </p>
+    <p>
+      O processamento de pagamento está sujeito à política de privacidade do respectivo 
+      provedor de pagamento. Após a confirmação do pagamento, a extensão recebe apenas 
+      uma confirmação de licença ativa associada ao seu e-mail.
+    </p>
+  </div>
+
+  <div class="priv-section" id="s7">
+    <h2><span class="num">7</span> Cookies e rastreamento</h2>
+    <p>
+      A extensão em si <strong>não utiliza cookies</strong> e <strong>não implementa rastreamento analítico</strong> 
+      (como Google Analytics, Hotjar, Mixpanel etc.) dentro do popup.
+    </p>
+    <p>
+      Esta landing page pode utilizar serviços básicos de hospedagem que registram 
+      acessos de forma agregada (endereço IP, navegador, país) para fins operacionais. 
+      Nenhuma informação de identificação pessoal é coletada pela landing page de forma ativa.
+    </p>
+  </div>
+
+  <div class="priv-section" id="s8">
+    <h2><span class="num">8</span> Seus direitos (LGPD)</h2>
+    <p>
+      Nos termos da Lei Geral de Proteção de Dados (Lei 13.709/2018), você tem o direito de:
+    </p>
+    <ul>
+      <li><strong>Acesso:</strong> saber quais dados estão armazenados (você mesmo pode ver em Config → Exportar backup)</li>
+      <li><strong>Correção:</strong> editar qualquer lead diretamente na extensão</li>
+      <li><strong>Eliminação:</strong> remover leads individualmente ou usar "Limpar todos os leads" em Config</li>
+      <li><strong>Portabilidade:</strong> exportar todos os dados em JSON pelo Exportar backup</li>
+      <li><strong>Revogação:</strong> desinstalar a extensão remove todos os dados do storage local</li>
+    </ul>
+    <p>
+      Como os dados são armazenados localmente no seu dispositivo, você já exerce controle 
+      total sobre eles sem depender de solicitação à Kodaru Systems.
+    </p>
+  </div>
+
+  <div class="priv-section" id="s9">
+    <h2><span class="num">9</span> Alterações nesta política</h2>
+    <p>
+      Esta política pode ser atualizada para refletir mudanças na extensão ou em requisitos legais. 
+      A data da última atualização sempre estará visível no topo desta página. 
+      Alterações significativas serão comunicadas via notas de atualização na Chrome Web Store.
+    </p>
+    <p>
+      O uso continuado da extensão após a publicação de alterações implica aceite 
+      da política revisada.
+    </p>
+  </div>
+
+  <div class="priv-section" id="s10">
+    <h2><span class="num">10</span> Contato</h2>
+    <p>
+      Para dúvidas, solicitações relacionadas à privacidade ou qualquer questão sobre esta política, 
+      entre em contato:
+    </p>
+  </div>
+
+  <div class="contact-card">
+    <h3>Kodaru Systems</h3>
+    <p>Desenvolvedor: Carlos Eduardo<br>Responsável pelo tratamento de dados</p>
+    <a href="mailto:cadu.sistem@gmail.com">✉️ cadu.sistem@gmail.com</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Início</a>
+    <a href="index.html#features">Funcionalidades</a>
+    <a href="index.html#pricing">Preços</a>
+    <a href="privacy.html">Política de Privacidade</a>
+  </div>
+  <div class="footer-copy">© 2026 LinkedIn Lead CRM · Kodaru Systems · Não afiliado ao LinkedIn Corporation</div>
+</footer>
+
+</body>
+</html>
