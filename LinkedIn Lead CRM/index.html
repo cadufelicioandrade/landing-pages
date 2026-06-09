@@ -362,8 +362,8 @@
         <div class="pricing-price"><span class="currency">$</span>0</div>
         <div class="pricing-period" data-i18n="plan_free_period">Para sempre gratuito</div>
         <ul class="pricing-features">
-          <li><span class="icon-yes">✓</span> <span data-i18n="pf1">Captura de leads ilimitada</span></li>
-          <li><span class="icon-yes">✓</span> <span data-i18n="pf2">Exportação CSV (até 10 leads)</span></li>
+          <li><span class="icon-yes">✓</span> <span data-i18n="pf1">Captura de até 30 leads</span></li>
+          <li><span class="icon-yes">✓</span> <span data-i18n="pf2">Exportação CSV (até 30 leads)</span></li>
           <li><span class="icon-yes">✓</span> <span data-i18n="pf3">Até 3 tags personalizadas</span></li>
           <li><span class="icon-yes">✓</span> <span data-i18n="pf4">Templates de mensagem básicos</span></li>
           <li><span class="icon-no">✗</span> <span class="feat-muted" data-i18n="pf5">Exportação Excel (.xlsx)</span></li>
@@ -378,6 +378,7 @@
         <div class="pricing-price" style="color:var(--amber);"><span class="currency">$</span>7</div>
         <div class="pricing-period" data-i18n="plan_pro_period">por mês · cancele quando quiser</div>
         <ul class="pricing-features">
+          <li><span class="icon-yes">✓</span> <span data-i18n="pp0">Leads ilimitados</span></li>
           <li><span class="icon-yes">✓</span> <span data-i18n="pp1">Tudo do Free</span></li>
           <li><span class="icon-yes">✓</span> <span data-i18n="pp2">Exportação Excel .xlsx</span></li>
           <li><span class="icon-yes">✓</span> <span data-i18n="pp3">Tags ilimitadas</span></li>
@@ -446,8 +447,8 @@ const T = {
     f5_b1:'Tags personalizadas ilimitadas (Pro) ou até 3 (Free)', f5_b2:'Tema escuro nativo no popup', f5_b3:'Backup e importação em JSON', f5_b4:'Seção de feedback direto para o desenvolvedor', f5_b5:'Gerenciamento de licença Pro integrado',
     price_eyebrow:'Planos', price_title:'Comece grátis. Escale com Pro.', price_sub:'O plano Free já é poderoso. O Pro desbloqueia exportação Excel, tags ilimitadas e templates sem limite.',
     plan_free:'Free', plan_free_period:'Para sempre gratuito', plan_pro:'Pro', plan_pro_badge:'⚡ Mais popular', plan_pro_period:'por mês · cancele quando quiser',
-    pf1:'Captura de leads ilimitada', pf2:'Exportação CSV (até 10 leads)', pf3:'Até 3 tags personalizadas', pf4:'Templates de mensagem básicos', pf5:'Exportação Excel (.xlsx)', pf6:'Tags ilimitadas', pf7:'Filtros avançados no Export',
-    pp1:'Tudo do Free', pp2:'Exportação Excel .xlsx', pp3:'Tags ilimitadas', pp4:'Templates ilimitados', pp5:'Filtros por tag e status no Export', pp6:'Agrupamento por aba no Excel', pp7:'Exportação CSV sem limite',
+    pf1:'Captura de até 30 leads', pf2:'Exportação CSV (até 30 leads)', pf3:'Até 3 tags personalizadas', pf4:'Templates de mensagem básicos', pf5:'Exportação Excel (.xlsx)', pf6:'Tags ilimitadas', pf7:'Filtros avançados no Export',
+    pp0:'Leads ilimitados', pp1:'Tudo do Free', pp2:'Exportação Excel .xlsx', pp3:'Tags ilimitadas', pp4:'Templates ilimitados', pp5:'Filtros por tag e status no Export', pp6:'Agrupamento por aba no Excel', pp7:'Exportação CSV sem limite',
     btn_free:'Instalar grátis', btn_pro:'Assinar Pro →',
     cta_title:'Pronto para prospectar<br>com muito mais eficiência?', cta_sub:'Instale agora e comece a capturar leads no LinkedIn em menos de 1 minuto. Grátis para sempre.',
     footer_copy:'© 2026 LinkedIn Lead CRM · Kodaru Systems · Não afiliado ao LinkedIn Corporation'
@@ -480,8 +481,8 @@ const T = {
     f5_b1:'Unlimited custom tags (Pro) or up to 3 (Free)', f5_b2:'Native dark theme in the popup', f5_b3:'Backup and import in JSON', f5_b4:'Direct feedback section to the developer', f5_b5:'Integrated Pro license management',
     price_eyebrow:'Pricing', price_title:'Start free. Scale with Pro.', price_sub:'The Free plan is already powerful. Pro unlocks Excel export, unlimited tags and unlimited templates.',
     plan_free:'Free', plan_free_period:'Free forever', plan_pro:'Pro', plan_pro_badge:'⚡ Most popular', plan_pro_period:'per month · cancel anytime',
-    pf1:'Unlimited lead capture', pf2:'CSV export (up to 10 leads)', pf3:'Up to 3 custom tags', pf4:'Basic message templates', pf5:'Excel export (.xlsx)', pf6:'Unlimited tags', pf7:'Advanced export filters',
-    pp1:'Everything in Free', pp2:'Excel .xlsx export', pp3:'Unlimited tags', pp4:'Unlimited templates', pp5:'Tag and status filters in Export', pp6:'Group by tag in separate sheets', pp7:'Unlimited CSV export',
+    pf1:'Capture up to 30 leads', pf2:'CSV export (up to 30 leads)', pf3:'Up to 3 custom tags', pf4:'Basic message templates', pf5:'Excel export (.xlsx)', pf6:'Unlimited tags', pf7:'Advanced export filters',
+    pp0:'Unlimited leads', pp1:'Everything in Free', pp2:'Excel .xlsx export', pp3:'Unlimited tags', pp4:'Unlimited templates', pp5:'Tag and status filters in Export', pp6:'Group by tag in separate sheets', pp7:'Unlimited CSV export',
     btn_free:'Install free', btn_pro:'Get Pro →',
     cta_title:'Ready to prospect<br>with much more efficiency?', cta_sub:'Install now and start capturing LinkedIn leads in under 1 minute. Free forever.',
     footer_copy:'© 2026 LinkedIn Lead CRM · Kodaru Systems · Not affiliated with LinkedIn Corporation'
@@ -514,8 +515,8 @@ const T = {
     f5_b1:'Etiquetas personalizadas ilimitadas (Pro) o hasta 3 (Free)', f5_b2:'Tema oscuro nativo en el popup', f5_b3:'Backup e importación en JSON', f5_b4:'Sección de feedback directo al desarrollador', f5_b5:'Gestión de licencia Pro integrada',
     price_eyebrow:'Precios', price_title:'Empieza gratis. Escala con Pro.', price_sub:'El plan Free ya es poderoso. Pro desbloquea exportación Excel, etiquetas ilimitadas y templates sin límite.',
     plan_free:'Free', plan_free_period:'Gratis para siempre', plan_pro:'Pro', plan_pro_badge:'⚡ Más popular', plan_pro_period:'por mes · cancela cuando quieras',
-    pf1:'Captura de leads ilimitada', pf2:'Exportación CSV (hasta 10 leads)', pf3:'Hasta 3 etiquetas personalizadas', pf4:'Templates de mensajes básicos', pf5:'Exportación Excel (.xlsx)', pf6:'Etiquetas ilimitadas', pf7:'Filtros avanzados en Export',
-    pp1:'Todo de Free', pp2:'Exportación Excel .xlsx', pp3:'Etiquetas ilimitadas', pp4:'Templates ilimitados', pp5:'Filtros por etiqueta y estado en Export', pp6:'Agrupación por pestaña en Excel', pp7:'Exportación CSV sin límite',
+    pf1:'Captura de até 30 leads', pf2:'Exportación CSV (hasta 30 leads)', pf3:'Hasta 3 etiquetas personalizadas', pf4:'Templates de mensajes básicos', pf5:'Exportación Excel (.xlsx)', pf6:'Etiquetas ilimitadas', pf7:'Filtros avanzados en Export',
+    pp0:'Leads ilimitados', pp1:'Todo de Free', pp2:'Exportación Excel .xlsx', pp3:'Etiquetas ilimitadas', pp4:'Templates ilimitados', pp5:'Filtros por etiqueta y estado en Export', pp6:'Agrupación por pestaña en Excel', pp7:'Exportación CSV sin límite',
     btn_free:'Instalar gratis', btn_pro:'Obtener Pro →',
     cta_title:'¿Listo para prospectar<br>con mucha más eficiencia?', cta_sub:'Instala ahora y empieza a capturar leads en LinkedIn en menos de 1 minuto. Gratis para siempre.',
     footer_copy:'© 2026 LinkedIn Lead CRM · Kodaru Systems · No afiliado a LinkedIn Corporation'
@@ -548,8 +549,8 @@ const T = {
     f5_b1:'Unbegrenzte benutzerdefinierte Tags (Pro) oder bis zu 3 (Free)', f5_b2:'Nativer Dunkelmodus im Popup', f5_b3:'Backup und Import in JSON', f5_b4:'Direktes Feedback an den Entwickler', f5_b5:'Integrierte Pro-Lizenzverwaltung',
     price_eyebrow:'Preise', price_title:'Kostenlos starten. Mit Pro skalieren.', price_sub:'Der Free-Plan ist bereits leistungsstark. Pro schaltet Excel-Export, unbegrenzte Tags und unbegrenzte Vorlagen frei.',
     plan_free:'Free', plan_free_period:'Für immer kostenlos', plan_pro:'Pro', plan_pro_badge:'⚡ Beliebteste', plan_pro_period:'pro Monat · jederzeit kündbar',
-    pf1:'Unbegrenzte Lead-Erfassung', pf2:'CSV-Export (bis zu 10 Leads)', pf3:'Bis zu 3 benutzerdefinierte Tags', pf4:'Grundlegende Nachrichtenvorlagen', pf5:'Excel-Export (.xlsx)', pf6:'Unbegrenzte Tags', pf7:'Erweiterte Export-Filter',
-    pp1:'Alles aus Free', pp2:'Excel .xlsx Export', pp3:'Unbegrenzte Tags', pp4:'Unbegrenzte Vorlagen', pp5:'Tag- und Status-Filter im Export', pp6:'Gruppierung nach Tab in Excel', pp7:'Unbegrenzter CSV-Export',
+    pf1:'Bis zu 30 Leads erfassen', pf2:'CSV-Export (bis zu 30 Leads)', pf3:'Bis zu 3 benutzerdefinierte Tags', pf4:'Grundlegende Nachrichtenvorlagen', pf5:'Excel-Export (.xlsx)', pf6:'Unbegrenzte Tags', pf7:'Erweiterte Export-Filter',
+    pp0:'Unbegrenzte Leads', pp1:'Alles aus Free', pp2:'Excel .xlsx Export', pp3:'Unbegrenzte Tags', pp4:'Unbegrenzte Vorlagen', pp5:'Tag- und Status-Filter im Export', pp6:'Gruppierung nach Tab in Excel', pp7:'Unbegrenzter CSV-Export',
     btn_free:'Kostenlos installieren', btn_pro:'Pro holen →',
     cta_title:'Bereit, viel effizienter<br>zu akquirieren?', cta_sub:'Jetzt installieren und in weniger als 1 Minute mit der Lead-Erfassung auf LinkedIn beginnen. Für immer kostenlos.',
     footer_copy:'© 2026 LinkedIn Lead CRM · Kodaru Systems · Nicht mit LinkedIn Corporation verbunden'
@@ -582,8 +583,8 @@ const T = {
     f5_b1:'Tags personnalisés illimités (Pro) ou jusqu'à 3 (Free)', f5_b2:'Thème sombre natif dans le popup', f5_b3:'Sauvegarde et importation en JSON', f5_b4:'Section de feedback direct au développeur', f5_b5:'Gestion de licence Pro intégrée',
     price_eyebrow:'Tarifs', price_title:'Commencez gratuitement. Évoluez avec Pro.', price_sub:'Le plan Free est déjà puissant. Pro débloque l'export Excel, les tags illimités et les modèles sans limite.',
     plan_free:'Free', plan_free_period:'Gratuit pour toujours', plan_pro:'Pro', plan_pro_badge:'⚡ Le plus populaire', plan_pro_period:'par mois · résiliez quand vous voulez',
-    pf1:'Capture de leads illimitée', pf2:'Export CSV (jusqu'à 10 leads)', pf3:'Jusqu'à 3 tags personnalisés', pf4:'Modèles de messages basiques', pf5:'Export Excel (.xlsx)', pf6:'Tags illimités', pf7:'Filtres avancés dans l'export',
-    pp1:'Tout de Free', pp2:'Export Excel .xlsx', pp3:'Tags illimités', pp4:'Modèles illimités', pp5:'Filtres par tag et statut dans l'export', pp6:'Regroupement par onglet dans Excel', pp7:'Export CSV illimité',
+    pf1:'Capture jusqu\'à 30 leads', pf2:'Export CSV (jusqu'à 10 leads)', pf3:'Jusqu'à 3 tags personnalisés', pf4:'Modèles de messages basiques', pf5:'Export Excel (.xlsx)', pf6:'Tags illimités', pf7:'Filtres avancés dans l'export',
+    pp0:'Leads illimités', pp1:'Tout de Free', pp2:'Export Excel .xlsx', pp3:'Tags illimités', pp4:'Modèles illimités', pp5:'Filtres par tag et statut dans l'export', pp6:'Regroupement par onglet dans Excel', pp7:'Export CSV illimité',
     btn_free:'Installer gratuitement', btn_pro:'Obtenir Pro →',
     cta_title:'Prêt à prospecter<br>avec beaucoup plus d'efficacité ?', cta_sub:'Installez maintenant et commencez à capturer des leads LinkedIn en moins d'1 minute. Gratuit pour toujours.',
     footer_copy:'© 2026 LinkedIn Lead CRM · Kodaru Systems · Non affilié à LinkedIn Corporation'
@@ -616,8 +617,8 @@ const T = {
     f5_b1:'असीमित कस्टम टैग (Pro) या 3 तक (Free)', f5_b2:'पॉपअप में नेटिव डार्क थीम', f5_b3:'JSON में बैकअप और इम्पोर्ट', f5_b4:'डेवलपर को सीधे फ़ीडबैक सेक्शन', f5_b5:'Pro लाइसेंस प्रबंधन एकीकृत',
     price_eyebrow:'मूल्य', price_title:'मुफ्त शुरू करें। Pro के साथ स्केल करें।', price_sub:'Free प्लान पहले से शक्तिशाली है। Pro Excel एक्सपोर्ट, असीमित टैग और असीमित टेम्पलेट अनलॉक करता है।',
     plan_free:'Free', plan_free_period:'हमेशा के लिए मुफ्त', plan_pro:'Pro', plan_pro_badge:'⚡ सबसे लोकप्रिय', plan_pro_period:'प्रति माह · जब चाहें रद्द करें',
-    pf1:'असीमित लीड कैप्चर', pf2:'CSV एक्सपोर्ट (10 लीड तक)', pf3:'3 कस्टम टैग तक', pf4:'बेसिक मैसेज टेम्पलेट', pf5:'Excel एक्सपोर्ट (.xlsx)', pf6:'असीमित टैग', pf7:'एडवांस एक्सपोर्ट फ़िल्टर',
-    pp1:'Free का सब कुछ', pp2:'Excel .xlsx एक्सपोर्ट', pp3:'असीमित टैग', pp4:'असीमित टेम्पलेट', pp5:'Export में टैग और स्टेटस फ़िल्टर', pp6:'Excel में अलग शीट में ग्रुपिंग', pp7:'असीमित CSV एक्सपोर्ट',
+    pf1:'30 लीड तक कैप्चर', pf2:'CSV एक्सपोर्ट (30 लीड तक)', pf3:'3 कस्टम टैग तक', pf4:'बेसिक मैसेज टेम्पलेट', pf5:'Excel एक्सपोर्ट (.xlsx)', pf6:'असीमित टैग', pf7:'एडवांस एक्सपोर्ट फ़िल्टर',
+    pp0:'असीमित लीड', pp1:'Free का सब कुछ', pp2:'Excel .xlsx एक्सपोर्ट', pp3:'असीमित टैग', pp4:'असीमित टेम्पलेट', pp5:'Export में टैग और स्टेटस फ़िल्टर', pp6:'Excel में अलग शीट में ग्रुपिंग', pp7:'असीमित CSV एक्सपोर्ट',
     btn_free:'मुफ्त इंस्टॉल करें', btn_pro:'Pro लें →',
     cta_title:'बहुत अधिक दक्षता के साथ<br>प्रॉस्पेक्ट करने के लिए तैयार हैं?', cta_sub:'अभी इंस्टॉल करें और 1 मिनट से कम में LinkedIn पर लीड कैप्चर करना शुरू करें। हमेशा के लिए मुफ्त।',
     footer_copy:'© 2026 LinkedIn Lead CRM · Kodaru Systems · LinkedIn Corporation से संबद्ध नहीं'
