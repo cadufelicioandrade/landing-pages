@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WaterPulse — Account &amp; Data Deletion</title>
+<meta name="description" content="Request deletion of your WaterPulse account and data, by Kodaru Systems." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0B2942;
+    --navy-deep: #071B2C;
+    --mint: #4FD9C4;
+    --mint-deep: #19967E;
+    --foam: #F4FAF9;
+    --paper: #FFFFFF;
+    --terracotta: #E2572B;
+    --terracotta-deep: #C8431D;
+    --ink: #16222E;
+    --ink-soft: #5B6B74;
+    --line: #DCE8E6;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--foam);
+    color: var(--ink);
+    font-family: 'Outfit', sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: var(--mint-deep); }
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--terracotta);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    padding: 28px 0 0;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .brand-mark{
+    width: 34px; height:34px;
+    flex-shrink:0;
+  }
+  .brand-text{
+    display:flex;
+    flex-direction:column;
+    line-height:1.1;
+  }
+  .brand-text strong{
+    font-size: 17px;
+    font-weight:700;
+    color: var(--navy);
+  }
+  .brand-text span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .04em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    display:grid;
+    grid-template-columns: 1.15fr .85fr;
+    align-items:center;
+    gap: 36px;
+    padding: 56px 0 40px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing:.08em;
+    text-transform: uppercase;
+    color: var(--mint-deep);
+    margin: 0 0 14px;
+  }
+  h1{
+    font-family:'DM Serif Display', serif;
+    font-weight:400;
+    font-size: clamp(32px, 5vw, 44px);
+    line-height:1.12;
+    color: var(--navy);
+    margin: 0 0 18px;
+  }
+  .hero p{
+    color: var(--ink-soft);
+    font-size: 16.5px;
+    max-width: 480px;
+    margin: 0;
+  }
+
+  /* glass illustration */
+  .glass-box{ display:flex; justify-content:center; }
+  .glass{ width: 150px; height: 190px; }
+  .water-mask{
+    animation: drain 2.6s cubic-bezier(.65,0,.35,1) forwards;
+  }
+  @keyframes drain{
+    from{ transform: translateY(0); }
+    to{ transform: translateY(112px); }
+  }
+  .ripple{
+    animation: ripple 3.4s ease-in-out infinite;
+    transform-origin: center;
+  }
+  @keyframes ripple{
+    0%,100%{ transform: scaleY(1); }
+    50%{ transform: scaleY(1.18); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .water-mask{ animation: none; transform: translateY(112px); }
+    .ripple{ animation: none; }
+  }
+
+  /* ---------- Section shell ---------- */
+  section{ padding: 38px 0; }
+  section + section{ border-top: 1px solid var(--line); }
+  h2{
+    font-family:'DM Serif Display', serif;
+    font-weight:400;
+    font-size: 26px;
+    color: var(--navy);
+    margin: 0 0 22px;
+  }
+
+  /* ---------- Steps ---------- */
+  .steps{
+    display:flex;
+    flex-direction:column;
+    gap: 22px;
+  }
+  .step{
+    display:grid;
+    grid-template-columns: 44px 1fr;
+    gap: 16px;
+  }
+  .step-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--mint-deep);
+    border: 1px solid var(--mint);
+    border-radius: 50%;
+    width: 36px; height:36px;
+    display:flex; align-items:center; justify-content:center;
+    background: #fff;
+  }
+  .step h3{
+    margin: 2px 0 4px;
+    font-size: 16px;
+    font-weight:600;
+    color: var(--ink);
+  }
+  .step p{
+    margin:0;
+    color: var(--ink-soft);
+    font-size: 15px;
+  }
+  .step a.cta-inline{
+    font-weight:600;
+    text-decoration: none;
+    border-bottom: 1px solid var(--mint-deep);
+  }
+
+  /* ---------- Data comparison ---------- */
+  .data-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .data-card{
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 22px 22px 6px;
+    border: 1px solid var(--line);
+  }
+  .data-card h3{
+    font-size: 14px;
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .dot{ width:8px; height:8px; border-radius:50%; display:inline-block; }
+  .dot.removed{ background: var(--terracotta); }
+  .dot.kept{ background: var(--mint-deep); }
+
+  .data-card ul{
+    margin:0; padding: 0 0 18px;
+    list-style:none;
+  }
+  .data-card li{
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    padding: 8px 0;
+    border-top: 1px solid var(--line);
+  }
+  .data-card li:first-child{ border-top:none; }
+
+  .retention{
+    margin-top: 18px;
+    font-size: 14px;
+    color: var(--ink-soft);
+    background: #fff;
+    border: 1px dashed var(--mint);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .retention strong{ color: var(--navy); }
+
+  /* ---------- CTA ---------- */
+  .cta-card{
+    background: var(--navy);
+    border-radius: 18px;
+    padding: 36px;
+    color: #fff;
+    display:grid;
+    grid-template-columns: 1.2fr .8fr;
+    align-items:center;
+    gap: 24px;
+  }
+  .cta-card h2{ color:#fff; font-size: 24px; margin-bottom: 10px; }
+  .cta-card p{ color: #BCD3D6; margin:0; font-size:14.5px; }
+  .cta-actions{ display:flex; flex-direction:column; gap:10px; }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding: 13px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14.5px;
+    text-decoration:none;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .btn-primary{
+    background: var(--terracotta);
+    color: #fff;
+  }
+  .btn-primary:hover{ background: var(--terracotta-deep); transform: translateY(-1px); }
+  .btn-ghost{
+    border: 1px solid rgba(255,255,255,.35);
+    color: #fff;
+    background: transparent;
+  }
+  .btn-ghost:hover{ background: rgba(255,255,255,.08); }
+
+  .note{
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-top: 12px;
+  }
+
+  footer{
+    padding: 30px 0 50px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap: 8px;
+  }
+  footer span{ font-family:'IBM Plex Mono', monospace; }
+
+  @media (max-width: 680px){
+    .hero{ grid-template-columns: 1fr; padding-top: 36px; }
+    .glass-box{ order:-1; }
+    .glass{ width: 110px; height: 140px; }
+    .data-grid{ grid-template-columns: 1fr; }
+    .cta-card{ grid-template-columns: 1fr; padding: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="brand">
+    <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 3C20 3 8 17.5 8 25.5C8 32.4036 13.3726 38 20 38C26.6274 38 32 32.4036 32 25.5C32 17.5 20 3 20 3Z" fill="#4FD9C4"/>
+      <path d="M20 3C20 3 8 17.5 8 25.5C8 32.4036 13.3726 38 20 38" stroke="#0B2942" stroke-width="1.4" fill="none" opacity="0.15"/>
+    </svg>
+    <div class="brand-text">
+      <strong>WaterPulse</strong>
+      <span>by Kodaru Systems</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Data safety &amp; privacy</p>
+      <h1>Delete your WaterPulse account and data</h1>
+      <p>You're in control of your information. This page explains, in plain terms, how to request deletion of your WaterPulse account and what happens to your data afterward.</p>
+    </div>
+    <div class="glass-box">
+      <svg class="glass" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="glassClip">
+            <path d="M14 6 H86 L78 118 C78 124 72 128 64 128 H36 C28 128 22 124 22 118 Z" />
+          </clipPath>
+        </defs>
+        <path d="M14 6 H86 L78 118 C78 124 72 128 64 128 H36 C28 128 22 124 22 118 Z"
+              fill="none" stroke="#0B2942" stroke-width="2.5"/>
+        <g class="water-mask" clip-path="url(#glassClip)">
+          <g class="ripple">
+            <rect x="10" y="14" width="80" height="120" fill="#4FD9C4" opacity="0.85"/>
+            <path d="M10 14 Q30 9 50 14 T90 14 V134 H10 Z" fill="#7BE6D6"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <h2>How to request it</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <h3>Find the email you signed in with</h3>
+          <p>Locate the Google email linked to your WaterPulse account — that's how we identify which account to delete.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <h3>Send your request</h3>
+          <p>Tap the button below to send a pre-filled email, or write directly to
+            <a class="cta-inline" href="mailto:cadufelicioandrade@gmail.com">cadufelicioandrade@gmail.com</a>.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <h3>Confirmation &amp; timeline</h3>
+          <p>You'll receive an email confirming receipt, and deletion is completed within 30 days, as detailed below.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What happens to your data</h2>
+    <div class="data-grid">
+      <div class="data-card">
+        <h3><span class="dot removed"></span>Permanently removed</h3>
+        <ul>
+          <li>Account profile (name, email, and photo linked to your sign-in)</li>
+          <li>Hydration history and drinking statistics</li>
+          <li>Preferences (weight, gender, language, unit of measure)</li>
+          <li>Data synced to the cloud (Firestore)</li>
+          <li>Account authentication record</li>
+        </ul>
+      </div>
+      <div class="data-card">
+        <h3><span class="dot kept"></span>Kept when necessary</h3>
+        <ul>
+          <li>Aggregated, anonymous usage statistics that don't identify you</li>
+          <li>Ad identifiers already processed by partners (Google AdMob), unlinked from your account</li>
+          <li>Records required by law for a limited period (e.g. fraud prevention), where applicable</li>
+        </ul>
+      </div>
+    </div>
+    <div class="retention">
+      <strong>Retention period:</strong> once your request is confirmed, personal data is deleted within 30 days. Backup copies may take up to 90 days to be fully removed from our systems.
+    </div>
+  </section>
+
+  <section>
+    <div class="cta-card">
+      <div>
+        <h2>Ready to delete your account?</h2>
+        <p>Send your request by email below. We'll confirm receipt and keep you posted on progress.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="mailto:cadufelicioandrade@gmail.com?subject=Account%20deletion%20request%20-%20WaterPulse&body=Hello%2C%0A%0AI%20would%20like%20to%20request%20deletion%20of%20my%20account%20and%20data%20on%20WaterPulse.%0A%0AEmail%20used%20to%20sign%20in%3A%20">
+          Request deletion by email
+        </a>
+        <a class="btn btn-ghost" href="#">View privacy policy</a>
+      </div>
+    </div>
+    <p class="note">Prefer to delete it in the app? Go to Settings → Account and look for the delete option, if available in your version of WaterPulse.</p>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>WaterPulse · Kodaru Systems</span>
+  <span>Last updated: June 2026</span>
+</footer>
+
+</body>
+</html>
