@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>WaterPulse — Account &amp; Data Deletion</title>
-<meta name="description" content="Request deletion of your WaterPulse account and data, by Kodaru Systems." />
+<title>Leviva Fast — Account &amp; Data Deletion</title>
+<meta name="description" content="Request deletion of your Leviva Fast account and data, by Kodaru Systems." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy: #0B2942;
-    --navy-deep: #071B2C;
-    --mint: #4FD9C4;
-    --mint-deep: #19967E;
-    --foam: #F4FAF9;
+    --navy: #0E1935;
+    --navy-deep: #071022;
+    --amber: #FBC93F;
+    --amber-deep: #C77A16;
+    --sand: #FAF7F2;
     --paper: #FFFFFF;
-    --terracotta: #E2572B;
+    --terracotta: #F04E23;
     --terracotta-deep: #C8431D;
-    --ink: #16222E;
-    --ink-soft: #5B6B74;
-    --line: #DCE8E6;
+    --ink: #1B2230;
+    --ink-soft: #6A7285;
+    --line: #E7E2D8;
   }
 
   *{ box-sizing: border-box; }
@@ -28,14 +28,14 @@
 
   body{
     margin:0;
-    background: var(--foam);
+    background: var(--sand);
     color: var(--ink);
     font-family: 'Outfit', sans-serif;
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
   }
 
-  a{ color: var(--mint-deep); }
+  a{ color: var(--amber-deep); }
   a:focus-visible, button:focus-visible{
     outline: 2px solid var(--terracotta);
     outline-offset: 3px;
@@ -91,7 +91,7 @@
     font-size: 12px;
     letter-spacing:.08em;
     text-transform: uppercase;
-    color: var(--mint-deep);
+    color: var(--amber-deep);
     margin: 0 0 14px;
   }
   h1{
@@ -109,27 +109,30 @@
     margin: 0;
   }
 
-  /* glass illustration */
-  .glass-box{ display:flex; justify-content:center; }
-  .glass{ width: 150px; height: 190px; }
-  .water-mask{
-    animation: drain 2.6s cubic-bezier(.65,0,.35,1) forwards;
-  }
-  @keyframes drain{
-    from{ transform: translateY(0); }
-    to{ transform: translateY(112px); }
-  }
-  .ripple{
-    animation: ripple 3.4s ease-in-out infinite;
+  /* fasting ring illustration */
+  .ring-box{ display:flex; justify-content:center; }
+  .ring{ width: 176px; height: 176px; }
+  .ring-progress{
+    stroke-dasharray: 534;
+    stroke-dashoffset: 80;
+    animation: unwind 2.8s cubic-bezier(.65,0,.35,1) forwards;
+    transform: rotate(-90deg);
     transform-origin: center;
   }
-  @keyframes ripple{
-    0%,100%{ transform: scaleY(1); }
-    50%{ transform: scaleY(1.18); }
+  @keyframes unwind{
+    from{ stroke-dashoffset: 80; }
+    to{ stroke-dashoffset: 534; }
+  }
+  .ring-pulse{
+    animation: fade 2.8s cubic-bezier(.65,0,.35,1) forwards;
+  }
+  @keyframes fade{
+    0%{ opacity: 1; }
+    100%{ opacity: .15; }
   }
   @media (prefers-reduced-motion: reduce){
-    .water-mask{ animation: none; transform: translateY(112px); }
-    .ripple{ animation: none; }
+    .ring-progress{ animation: none; stroke-dashoffset: 534; }
+    .ring-pulse{ animation: none; opacity: .15; }
   }
 
   /* ---------- Section shell ---------- */
@@ -157,8 +160,8 @@
   .step-num{
     font-family:'IBM Plex Mono', monospace;
     font-size: 13px;
-    color: var(--mint-deep);
-    border: 1px solid var(--mint);
+    color: var(--amber-deep);
+    border: 1px solid var(--amber);
     border-radius: 50%;
     width: 36px; height:36px;
     display:flex; align-items:center; justify-content:center;
@@ -178,7 +181,7 @@
   .step a.cta-inline{
     font-weight:600;
     text-decoration: none;
-    border-bottom: 1px solid var(--mint-deep);
+    border-bottom: 1px solid var(--amber-deep);
   }
 
   /* ---------- Data comparison ---------- */
@@ -205,7 +208,7 @@
   }
   .dot{ width:8px; height:8px; border-radius:50%; display:inline-block; }
   .dot.removed{ background: var(--terracotta); }
-  .dot.kept{ background: var(--mint-deep); }
+  .dot.kept{ background: var(--amber-deep); }
 
   .data-card ul{
     margin:0; padding: 0 0 18px;
@@ -224,7 +227,7 @@
     font-size: 14px;
     color: var(--ink-soft);
     background: #fff;
-    border: 1px dashed var(--mint);
+    border: 1px dashed var(--amber);
     border-radius: 12px;
     padding: 14px 16px;
   }
@@ -242,7 +245,7 @@
     gap: 24px;
   }
   .cta-card h2{ color:#fff; font-size: 24px; margin-bottom: 10px; }
-  .cta-card p{ color: #BCD3D6; margin:0; font-size:14.5px; }
+  .cta-card p{ color: #C6CEE0; margin:0; font-size:14.5px; }
   .cta-actions{ display:flex; flex-direction:column; gap:10px; }
   .btn{
     display:inline-flex;
@@ -287,8 +290,8 @@
 
   @media (max-width: 680px){
     .hero{ grid-template-columns: 1fr; padding-top: 36px; }
-    .glass-box{ order:-1; }
-    .glass{ width: 110px; height: 140px; }
+    .ring-box{ order:-1; }
+    .ring{ width: 130px; height: 130px; }
     .data-grid{ grid-template-columns: 1fr; }
     .cta-card{ grid-template-columns: 1fr; padding: 28px; }
   }
@@ -298,12 +301,25 @@
 
 <header class="wrap">
   <div class="brand">
-    <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20 3C20 3 8 17.5 8 25.5C8 32.4036 13.3726 38 20 38C26.6274 38 32 32.4036 32 25.5C32 17.5 20 3 20 3Z" fill="#4FD9C4"/>
-      <path d="M20 3C20 3 8 17.5 8 25.5C8 32.4036 13.3726 38 20 38" stroke="#0B2942" stroke-width="1.4" fill="none" opacity="0.15"/>
+    <svg class="brand-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="markWarm" x1="0.05" y1="0.95" x2="0.9" y2="0.05">
+          <stop offset="0%" stop-color="#F04E23"/>
+          <stop offset="42%" stop-color="#F5872B"/>
+          <stop offset="100%" stop-color="#FBC93F"/>
+        </linearGradient>
+      </defs>
+      <rect width="40" height="40" rx="9" fill="#0E1935"/>
+      <g transform="translate(20.5,19.8)">
+        <path d="M -4.9 7.8 A 9.2 9.2 0 1 0 -7.8 -4.9"
+              fill="none" stroke="url(#markWarm)" stroke-width="2.7" stroke-linecap="round"/>
+      </g>
+      <path d="M 8.6 20.2 L 12.4 20.2 L 13.8 17.9 L 15.4 22.6 L 17.3 14.3 L 18.9 20.2 L 20.8 20.2"
+            fill="none" stroke="url(#markWarm)" stroke-width="2.1"
+            stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
     <div class="brand-text">
-      <strong>WaterPulse</strong>
+      <strong>Leviva Fast</strong>
       <span>by Kodaru Systems</span>
     </div>
   </div>
@@ -314,23 +330,25 @@
   <section class="hero">
     <div>
       <p class="eyebrow">Data safety &amp; privacy</p>
-      <h1>Delete your WaterPulse account and data</h1>
-      <p>You're in control of your information. This page explains, in plain terms, how to request deletion of your WaterPulse account and what happens to your data afterward.</p>
+      <h1>Delete your Leviva Fast account and data</h1>
+      <p>You're in control of your information. This page explains, in plain terms, how to request deletion of your Leviva Fast account and what happens to your data afterward.</p>
     </div>
-    <div class="glass-box">
-      <svg class="glass" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+    <div class="ring-box">
+      <svg class="ring" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <clipPath id="glassClip">
-            <path d="M14 6 H86 L78 118 C78 124 72 128 64 128 H36 C28 128 22 124 22 118 Z" />
-          </clipPath>
+          <linearGradient id="ringWarm" x1="0.05" y1="0.95" x2="0.9" y2="0.05">
+            <stop offset="0%" stop-color="#F04E23"/>
+            <stop offset="42%" stop-color="#F5872B"/>
+            <stop offset="100%" stop-color="#FBC93F"/>
+          </linearGradient>
         </defs>
-        <path d="M14 6 H86 L78 118 C78 124 72 128 64 128 H36 C28 128 22 124 22 118 Z"
-              fill="none" stroke="#0B2942" stroke-width="2.5"/>
-        <g class="water-mask" clip-path="url(#glassClip)">
-          <g class="ripple">
-            <rect x="10" y="14" width="80" height="120" fill="#4FD9C4" opacity="0.85"/>
-            <path d="M10 14 Q30 9 50 14 T90 14 V134 H10 Z" fill="#7BE6D6"/>
-          </g>
+        <circle cx="100" cy="100" r="85" fill="none" stroke="#E7E2D8" stroke-width="14"/>
+        <circle class="ring-progress" cx="100" cy="100" r="85" fill="none"
+                stroke="url(#ringWarm)" stroke-width="14" stroke-linecap="round"/>
+        <g class="ring-pulse">
+          <path d="M 52 100 L 78 100 L 90 78 L 104 128 L 118 62 L 130 100 L 148 100"
+                fill="none" stroke="url(#ringWarm)" stroke-width="9"
+                stroke-linecap="round" stroke-linejoin="round"/>
         </g>
       </svg>
     </div>
@@ -343,11 +361,18 @@
         <div class="step-num">01</div>
         <div>
           <h3>Find the email you signed in with</h3>
-          <p>Locate the Google email linked to your WaterPulse account — that's how we identify which account to delete.</p>
+          <p>Locate the Google email linked to your Leviva Fast account — that's how we identify which account to delete.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">02</div>
+        <div>
+          <h3>Cancel your subscription first</h3>
+          <p>If you have an active Premium plan, cancel it in the Google Play Store under Payments &amp; subscriptions. Deleting your account does not automatically cancel billing.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
         <div>
           <h3>Send your request</h3>
           <p>Tap the button below to send a pre-filled email, or write directly to
@@ -355,7 +380,7 @@
         </div>
       </div>
       <div class="step">
-        <div class="step-num">03</div>
+        <div class="step-num">04</div>
         <div>
           <h3>Confirmation &amp; timeline</h3>
           <p>You'll receive an email confirming receipt, and deletion is completed within 30 days, as detailed below.</p>
@@ -371,8 +396,8 @@
         <h3><span class="dot removed"></span>Permanently removed</h3>
         <ul>
           <li>Account profile (name, email, and photo linked to your sign-in)</li>
-          <li>Hydration history and drinking statistics</li>
-          <li>Preferences (weight, gender, language, unit of measure)</li>
+          <li>Fasting history, completed windows and streaks</li>
+          <li>Preferences (fasting protocol, weight, gender, language, unit of measure)</li>
           <li>Data synced to the cloud (Firestore)</li>
           <li>Account authentication record</li>
         </ul>
@@ -382,6 +407,7 @@
         <ul>
           <li>Aggregated, anonymous usage statistics that don't identify you</li>
           <li>Ad identifiers already processed by partners (Google AdMob), unlinked from your account</li>
+          <li>Subscription and transaction records held by Google Play, which we do not control</li>
           <li>Records required by law for a limited period (e.g. fraud prevention), where applicable</li>
         </ul>
       </div>
@@ -398,20 +424,20 @@
         <p>Send your request by email below. We'll confirm receipt and keep you posted on progress.</p>
       </div>
       <div class="cta-actions">
-        <a class="btn btn-primary" href="mailto:cadufelicioandrade@gmail.com?subject=Account%20deletion%20request%20-%20WaterPulse&body=Hello%2C%0A%0AI%20would%20like%20to%20request%20deletion%20of%20my%20account%20and%20data%20on%20WaterPulse.%0A%0AEmail%20used%20to%20sign%20in%3A%20">
+        <a class="btn btn-primary" href="mailto:cadufelicioandrade@gmail.com?subject=Account%20deletion%20request%20-%20Leviva%20Fast&body=Hello%2C%0A%0AI%20would%20like%20to%20request%20deletion%20of%20my%20account%20and%20data%20on%20Leviva%20Fast.%0A%0AEmail%20used%20to%20sign%20in%3A%20">
           Request deletion by email
         </a>
         <a class="btn btn-ghost" href="privacy.html">View privacy policy</a>
       </div>
     </div>
-    <p class="note">Prefer to delete it in the app? Go to Settings → Account and look for the delete option, if available in your version of WaterPulse.</p>
+    <p class="note">Prefer to delete it in the app? Go to Settings → Account and look for the delete option, if available in your version of Leviva Fast.</p>
   </section>
 
 </main>
 
 <footer class="wrap">
-  <span>WaterPulse · Kodaru Systems</span>
-  <span>Last updated: June 2026</span>
+  <span>Leviva Fast · Kodaru Systems</span>
+  <span>Last updated: July 2026</span>
 </footer>
 
 </body>
