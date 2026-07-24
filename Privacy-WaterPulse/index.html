@@ -1,199 +1,515 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — WaterPulse</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DropPulse — Account &amp; Data Deletion | Kodaru System</title>
+<meta name="description" content="Official account deletion page for DropPulse (com.app.beberagua), developed by Kodaru System — Carlos Eduardo Felicio de Andrade. Request deletion of your DropPulse account and associated data." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0b1020;
-    --card: #11182e;
-    --text: #e8edf7;
-    --muted: #9aa6c2;
-    --accent: #3aa0ff;
-    --border: #1f2944;
+  :root{
+    --navy: #0B2942;
+    --navy-deep: #071B2C;
+    --mint: #4FD9C4;
+    --mint-deep: #19967E;
+    --foam: #F4FAF9;
+    --paper: #FFFFFF;
+    --terracotta: #E2572B;
+    --terracotta-deep: #C8431D;
+    --ink: #16222E;
+    --ink-soft: #5B6B74;
+    --line: #DCE8E6;
   }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.65;
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--foam);
+    color: var(--ink);
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
   }
-  .wrap {
-    max-width: 760px;
+
+  a{ color: var(--mint-deep); }
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--terracotta);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: 800px;
     margin: 0 auto;
-    padding: 48px 24px 96px;
+    padding: 0 24px;
   }
-  header {
-    margin-bottom: 32px;
+
+  /* ---------- Header ---------- */
+  header{ padding: 28px 0 0; }
+
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
   }
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--accent);
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 0.06em;
+  .brand-mark{
+    width: 34px; height:34px;
+    flex-shrink:0;
+  }
+  .brand-text{
+    display:flex;
+    flex-direction:column;
+    line-height:1.1;
+  }
+  .brand-text strong{
+    font-size: 17px;
+    font-weight:700;
+    color: var(--navy);
+  }
+  .brand-text span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .04em;
+    color: var(--ink-soft);
     text-transform: uppercase;
-    margin-bottom: 18px;
   }
-  h1 {
-    font-size: 28px;
-    margin: 0 0 8px;
-  }
-  .updated {
-    color: var(--muted);
-    font-size: 14px;
-  }
-  h2 {
-    font-size: 19px;
-    margin-top: 40px;
-    margin-bottom: 12px;
-    color: var(--text);
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 8px;
-  }
-  p, li { color: var(--text); font-size: 15.5px; }
-  ul { padding-left: 20px; }
-  li { margin-bottom: 8px; }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 18px 20px;
-    margin: 18px 0;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 16px 0;
+
+  /* ---------- Identity block (Google Play compliance) ---------- */
+  .identity{
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin: 24px 0 0;
     font-size: 14.5px;
   }
-  th, td {
-    text-align: left;
-    padding: 10px 8px;
-    border-bottom: 1px solid var(--border);
+  .identity dl{
+    margin:0;
+    display:grid;
+    grid-template-columns: 180px 1fr;
+    gap: 10px 16px;
   }
-  th { color: var(--muted); font-weight: 600; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  footer {
-    margin-top: 48px;
-    color: var(--muted);
+  .identity dt{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing:.03em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding-top: 2px;
+  }
+  .identity dd{
+    margin:0;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  code{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 13.5px;
+    background: var(--foam);
+    padding: 2px 6px;
+    border-radius: 5px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    display:grid;
+    grid-template-columns: 1.15fr .85fr;
+    align-items:center;
+    gap: 36px;
+    padding: 44px 0 34px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing:.08em;
+    text-transform: uppercase;
+    color: var(--mint-deep);
+    margin: 0 0 14px;
+  }
+  h1{
+    font-family:'DM Serif Display', Georgia, serif;
+    font-weight:400;
+    font-size: clamp(30px, 5vw, 42px);
+    line-height:1.12;
+    color: var(--navy);
+    margin: 0 0 18px;
+  }
+  .hero p{
+    color: var(--ink-soft);
+    font-size: 16.5px;
+    max-width: 480px;
+    margin: 0;
+  }
+  .hero p strong{ color: var(--ink); font-weight:600; }
+
+  /* glass illustration */
+  .glass-box{ display:flex; justify-content:center; }
+  .glass{ width: 150px; height: 190px; }
+  .water-mask{
+    animation: drain 2.6s cubic-bezier(.65,0,.35,1) forwards;
+  }
+  @keyframes drain{
+    from{ transform: translateY(0); }
+    to{ transform: translateY(112px); }
+  }
+  .ripple{
+    animation: ripple 3.4s ease-in-out infinite;
+    transform-origin: center;
+  }
+  @keyframes ripple{
+    0%,100%{ transform: scaleY(1); }
+    50%{ transform: scaleY(1.18); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .water-mask{ animation: none; transform: translateY(112px); }
+    .ripple{ animation: none; }
+    html{ scroll-behavior: auto; }
+  }
+
+  /* ---------- Section shell ---------- */
+  section{ padding: 38px 0; }
+  section + section{ border-top: 1px solid var(--line); }
+  h2{
+    font-family:'DM Serif Display', Georgia, serif;
+    font-weight:400;
+    font-size: 26px;
+    color: var(--navy);
+    margin: 0 0 22px;
+  }
+
+  /* ---------- Steps ---------- */
+  .steps{
+    display:flex;
+    flex-direction:column;
+    gap: 22px;
+  }
+  .step{
+    display:grid;
+    grid-template-columns: 44px 1fr;
+    gap: 16px;
+  }
+  .step-num{
+    font-family:'IBM Plex Mono', monospace;
     font-size: 13px;
+    color: var(--mint-deep);
+    border: 1px solid var(--mint);
+    border-radius: 50%;
+    width: 36px; height:36px;
+    display:flex; align-items:center; justify-content:center;
+    background: #fff;
+  }
+  .step h3{
+    margin: 2px 0 6px;
+    font-size: 16px;
+    font-weight:600;
+    color: var(--ink);
+  }
+  .step p{
+    margin:0 0 6px;
+    color: var(--ink-soft);
+    font-size: 15px;
+  }
+  .step p:last-child{ margin-bottom:0; }
+  .step ol{
+    margin: 8px 0 0;
+    padding-left: 18px;
+    color: var(--ink-soft);
+    font-size: 15px;
+  }
+  .step ol li{ padding: 3px 0; }
+  .step strong{ color: var(--ink); font-weight:600; }
+  a.cta-inline{
+    font-weight:600;
+    text-decoration: none;
+    border-bottom: 1px solid var(--mint-deep);
+  }
+
+  /* ---------- Data comparison ---------- */
+  .data-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .data-card{
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 22px 22px 6px;
+    border: 1px solid var(--line);
+  }
+  .data-card h3{
+    font-size: 14px;
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .dot{ width:8px; height:8px; border-radius:50%; display:inline-block; flex-shrink:0; }
+  .dot.removed{ background: var(--terracotta); }
+  .dot.kept{ background: var(--mint-deep); }
+
+  .data-card ul{
+    margin:0; padding: 0 0 18px;
+    list-style:none;
+  }
+  .data-card li{
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    padding: 8px 0;
+    border-top: 1px solid var(--line);
+  }
+  .data-card li:first-child{ border-top:none; }
+
+  .retention{
+    margin-top: 18px;
+    font-size: 14px;
+    color: var(--ink-soft);
+    background: #fff;
+    border: 1px dashed var(--mint);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .retention strong{ color: var(--navy); }
+
+  /* ---------- CTA ---------- */
+  .cta-card{
+    background: var(--navy);
+    border-radius: 18px;
+    padding: 36px;
+    color: #fff;
+    display:grid;
+    grid-template-columns: 1.2fr .8fr;
+    align-items:center;
+    gap: 24px;
+  }
+  .cta-card h2{ color:#fff; font-size: 24px; margin-bottom: 10px; }
+  .cta-card p{ color: #BCD3D6; margin:0; font-size:14.5px; }
+  .cta-actions{ display:flex; flex-direction:column; gap:10px; }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding: 13px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14.5px;
+    text-decoration:none;
+    text-align:center;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .btn-primary{
+    background: var(--terracotta);
+    color: #fff;
+  }
+  .btn-primary:hover{ background: var(--terracotta-deep); transform: translateY(-1px); }
+  .btn-ghost{
+    border: 1px solid rgba(255,255,255,.35);
+    color: #fff;
+    background: transparent;
+  }
+  .btn-ghost:hover{ background: rgba(255,255,255,.08); }
+
+  .contact-line{
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-top: 22px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .contact-line strong{ color: var(--navy); }
+
+  .note{
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 16px;
+  }
+  .note strong{ color: var(--ink); }
+
+  footer{
+    padding: 30px 0 50px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap: 8px;
+    border-top: 1px solid var(--line);
+  }
+  footer span{ font-family:'IBM Plex Mono', monospace; }
+
+  @media (max-width: 680px){
+    .hero{ grid-template-columns: 1fr; padding-top: 30px; }
+    .glass-box{ order:-1; }
+    .glass{ width: 110px; height: 140px; }
+    .data-grid{ grid-template-columns: 1fr; }
+    .cta-card{ grid-template-columns: 1fr; padding: 28px; }
+    .identity dl{ grid-template-columns: 1fr; gap: 2px 0; }
+    .identity dd{ margin-bottom: 12px; }
+    .identity dd:last-child{ margin-bottom: 0; }
   }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div class="brand">💧 WaterPulse · Kodaru Systems</div>
-    <h1>Privacy Policy</h1>
-    <div class="updated">Last updated: June 20, 2026</div>
-  </header>
 
-  <p>This Privacy Policy describes how the <strong>WaterPulse</strong> application
-  ("the App", "we") collects, uses and protects user information. By installing or using
-  WaterPulse, you agree to the terms described here.</p>
-
-  <h2>1. Who we are</h2>
-  <p>WaterPulse is developed and maintained by <strong>Kodaru Systems</strong>, an
-  independent software developer. If you have any questions about privacy, contact us at
-  <a href="mailto:cadufelicioandrade@gmail.com">cadufelicioandrade@gmail.com</a>.</p>
-
-  <h2>2. What data we collect</h2>
-  <div class="card">
-    <table>
-      <tr><th>Data</th><th>When it is collected</th><th>Purpose</th></tr>
-      <tr>
-        <td>Email address and name (Google)</td>
-        <td>If you choose to link your Google Account</td>
-        <td>Identify your account and sync data across devices</td>
-      </tr>
-      <tr>
-        <td>Hydration records, goals, weight, gender, app settings</td>
-        <td>Normal use of the app</td>
-        <td>Calculate your daily goal and keep your history (locally and, if signed in, in the cloud)</td>
-      </tr>
-      <tr>
-        <td>Advertising identifier and ad interaction data</td>
-        <td>When ads are displayed (Google AdMob)</td>
-        <td>Serve and measure the performance of ads</td>
-      </tr>
-      <tr>
-        <td>Crash and technical performance data (crash logs)</td>
-        <td>When an error occurs in the app</td>
-        <td>Identify and fix bugs (Firebase Crashlytics)</td>
-      </tr>
-      <tr>
-        <td>Usage data and app events</td>
-        <td>Normal use of the app</td>
-        <td>Understand which features are used most (Firebase Analytics)</td>
-      </tr>
-      <tr>
-        <td>In-app purchase history</td>
-        <td>When you buy the Premium version</td>
-        <td>Unlock and validate lifetime access to premium features</td>
-      </tr>
-    </table>
+<header class="wrap">
+  <div class="brand">
+    <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DropPulse logo">
+      <path d="M20 3C20 3 8 17.5 8 25.5C8 32.4036 13.3726 38 20 38C26.6274 38 32 32.4036 32 25.5C32 17.5 20 3 20 3Z" fill="#4FD9C4"/>
+      <path d="M20 3C20 3 8 17.5 8 25.5C8 32.4036 13.3726 38 20 38" stroke="#0B2942" stroke-width="1.4" fill="none" opacity="0.15"/>
+    </svg>
+    <div class="brand-text">
+      <strong>DropPulse</strong>
+      <span>by Kodaru System</span>
+    </div>
   </div>
 
-  <p><strong>The weight and gender you provide are used solely to estimate a daily
-  hydration goal and do not constitute medical advice.</strong> WaterPulse is not a
-  medical application and is not a substitute for guidance from healthcare professionals.</p>
+  <div class="identity">
+    <dl>
+      <dt>Application</dt>
+      <dd>DropPulse (formerly WaterPulse)</dd>
 
-  <h2>3. Where your data is stored</h2>
-  <p>Most of your data (water intake records, goals, reminders and settings) is stored
-  <strong>locally on your device</strong>. If you choose to link your Google Account, that
-  same data is also synced in encrypted form to <strong>Google Firebase</strong> servers
-  (Firestore and Authentication), so that you can restore it on another device.</p>
+      <dt>Package name</dt>
+      <dd><code>com.app.beberagua</code></dd>
 
-  <h2>4. Sharing with third parties</h2>
-  <p>We do not sell your personal data. We use the following third-party services, each
-  subject to its own privacy policy:</p>
-  <ul>
-    <li><strong>Google Firebase</strong> (Authentication, Firestore, Analytics, Crashlytics)
-      — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a></li>
-    <li><strong>Google AdMob</strong> — ads displayed in the free version of the app —
-      <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google's advertising policy</a></li>
-    <li><strong>Google Play Billing</strong> — processing of the Premium purchase (we have
-      no access to your payment card details)</li>
-  </ul>
+      <dt>Developer</dt>
+      <dd>Kodaru System — Carlos Eduardo Felicio de Andrade</dd>
 
-  <h2>5. Ads and Privacy Sandbox</h2>
-  <p>WaterPulse displays ads provided by Google AdMob in the free version. These ads may
-  use device identifiers for personalization, according to your Android privacy settings
-  (including the Privacy Sandbox/Topics API, where available). You can limit ad
-  personalization in your Android device's privacy settings.</p>
-  <p>Users who purchase the <strong>lifetime Premium</strong> version no longer see ads in
-  the app.</p>
+      <dt>Contact email</dt>
+      <dd><a href="mailto:cadufelicioandrade@gmail.com">cadufelicioandrade@gmail.com</a></dd>
+    </dl>
+  </div>
+</header>
 
-  <h2>6. Your rights</h2>
-  <p>At any time, you may:</p>
-  <ul>
-    <li>Use WaterPulse fully offline, without linking a Google Account;</li>
-    <li>Unlink your Google Account in the app's Settings;</li>
-    <li>Request deletion of the data stored in the cloud by writing to
-      <a href="mailto:cadufelicioandrade@gmail.com">cadufelicioandrade@gmail.com</a>;</li>
-    <li>Uninstall the app, which removes all data stored locally on the device.</li>
-  </ul>
+<main class="wrap">
 
-  <h2>7. Children</h2>
-  <p>WaterPulse is not directed at children under 13 years of age, and we do not knowingly
-  collect personal data from children.</p>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Data safety &amp; privacy</p>
+      <h1>Delete your DropPulse account and data</h1>
+      <p>This page explains how to request deletion of your <strong>DropPulse</strong> account and what happens to your data afterward. DropPulse (<code>com.app.beberagua</code>) is developed and operated by <strong>Kodaru System — Carlos Eduardo Felicio de Andrade</strong>.</p>
+    </div>
+    <div class="glass-box">
+      <svg class="glass" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a glass of water emptying">
+        <defs>
+          <clipPath id="glassClip">
+            <path d="M14 6 H86 L78 118 C78 124 72 128 64 128 H36 C28 128 22 124 22 118 Z" />
+          </clipPath>
+        </defs>
+        <path d="M14 6 H86 L78 118 C78 124 72 128 64 128 H36 C28 128 22 124 22 118 Z"
+              fill="none" stroke="#0B2942" stroke-width="2.5"/>
+        <g class="water-mask" clip-path="url(#glassClip)">
+          <g class="ripple">
+            <rect x="10" y="14" width="80" height="120" fill="#4FD9C4" opacity="0.85"/>
+            <path d="M10 14 Q30 9 50 14 T90 14 V134 H10 Z" fill="#7BE6D6"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </section>
 
-  <h2>8. Changes to this policy</h2>
-  <p>We may update this Privacy Policy from time to time. Material changes will be
-  reflected in the "last updated" date at the top of this page.</p>
+  <section>
+    <h2>How to request deletion</h2>
+    <div class="steps">
 
-  <h2>9. Contact</h2>
-  <p>Questions about this policy can be sent to
-  <a href="mailto:cadufelicioandrade@gmail.com">cadufelicioandrade@gmail.com</a>.</p>
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <h3>Delete your account inside the DropPulse app</h3>
+          <p>The fastest option, available directly in the app:</p>
+          <ol>
+            <li>Open <strong>DropPulse</strong> on your device</li>
+            <li>Tap the <strong>Me</strong> tab in the bottom navigation bar</li>
+            <li>Scroll to the <strong>Account</strong> section</li>
+            <li>Tap <strong>Delete account</strong></li>
+            <li>Confirm the deletion when prompted</li>
+          </ol>
+        </div>
+      </div>
 
-  <footer>© 2026 Kodaru Systems. All rights reserved.</footer>
-</div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <h3>Or request deletion by email</h3>
+          <p>Write to
+            <a class="cta-inline" href="mailto:cadufelicioandrade@gmail.com">cadufelicioandrade@gmail.com</a>
+            with the subject <strong>"Account deletion request — DropPulse"</strong>, including the email address you used to sign in to DropPulse. That address is how Kodaru System identifies which account to delete.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <h3>Confirmation and timeline</h3>
+          <p>Kodaru System will confirm receipt of your request by email. Your DropPulse account and personal data are permanently deleted within <strong>30 days</strong> of that confirmation. You do not need an active account or a login to submit a request through this page.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>What happens to your data</h2>
+    <div class="data-grid">
+      <div class="data-card">
+        <h3><span class="dot removed"></span>Permanently deleted</h3>
+        <ul>
+          <li>Account profile (name, email, and photo linked to your sign-in)</li>
+          <li>Hydration history and drinking statistics</li>
+          <li>Preferences (weight, gender, language, unit of measure)</li>
+          <li>Data synced to the cloud (Firestore)</li>
+          <li>Account authentication record</li>
+        </ul>
+      </div>
+      <div class="data-card">
+        <h3><span class="dot kept"></span>Retained when required</h3>
+        <ul>
+          <li>Aggregated, anonymous usage statistics that cannot identify you</li>
+          <li>Advertising identifiers already processed by partners (Google AdMob), unlinked from your account</li>
+          <li>Transaction and subscription records required by applicable tax law, kept separately from your identity</li>
+        </ul>
+      </div>
+    </div>
+    <div class="retention">
+      <strong>Retention period:</strong> once your request is confirmed, personal data associated with your DropPulse account is deleted within <strong>30 days</strong>. Encrypted backup copies may take up to <strong>90 days</strong> to be fully purged from Kodaru System's systems.
+    </div>
+  </section>
+
+  <section>
+    <div class="cta-card">
+      <div>
+        <h2>Ready to delete your DropPulse account?</h2>
+        <p>Send your request to Kodaru System using the button below. You will receive a confirmation email.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="mailto:cadufelicioandrade@gmail.com?subject=Account%20deletion%20request%20%E2%80%94%20DropPulse&body=Hello%20Kodaru%20System%2C%0A%0AI%20would%20like%20to%20request%20the%20deletion%20of%20my%20account%20and%20all%20associated%20data%20in%20the%20DropPulse%20app%20(com.app.beberagua).%0A%0AEmail%20used%20to%20sign%20in%3A%20%0A%0AThank%20you.">
+          Request deletion by email
+        </a>
+        <a class="btn btn-ghost" href="privacy.html">View privacy policy</a>
+      </div>
+    </div>
+
+    <div class="contact-line">
+      <strong>DropPulse</strong> · <code>com.app.beberagua</code> · developed by <strong>Kodaru System — Carlos Eduardo Felicio de Andrade</strong> · <a href="mailto:cadufelicioandrade@gmail.com">cadufelicioandrade@gmail.com</a>
+    </div>
+
+    <p class="note">You can also delete your account directly in the app: open DropPulse, tap the <strong>Me</strong> tab, go to the <strong>Account</strong> section and tap <strong>Delete account</strong>. This is the official account deletion request page for the <strong>DropPulse</strong> application published on Google Play by <strong>Kodaru System — Carlos Eduardo Felicio de Andrade</strong>.</p>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>DropPulse · Kodaru System</span>
+  <span>Last updated: July 2026</span>
+</footer>
+
 </body>
 </html>
