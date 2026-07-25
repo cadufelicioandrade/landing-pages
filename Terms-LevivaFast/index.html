@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terms of Use — Leviva Fast</title>
+<title>Terms of Use — LevivaFast</title>
+<meta name="description" content="Terms of Use and End User License Agreement for the LevivaFast intermittent fasting app by Kodaru System.">
 <style>
   :root {
     --bg: #0B1020;
@@ -47,100 +48,284 @@
     border-bottom: 1px solid var(--border);
     padding-bottom: 8px;
   }
+  h3 { font-size: 15.5px; margin: 24px 0 6px; }
   p, li { font-size: 15.5px; }
   ul { padding-left: 20px; }
   li { margin-bottom: 8px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin: 18px 0;
+  }
+  .card.warn { border-color: #6E3A1E; }
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
-  footer { margin-top: 48px; color: var(--muted); font-size: 13px; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    vertical-align: 2px;
+    margin-right: 6px;
+    white-space: nowrap;
+  }
+  .tag.ios { border-color: #3A4A7A; color: #A9BCEC; }
+  .tag.android { border-color: #2E5A44; color: #8FD3AC; }
+  .toc { font-size: 14.5px; }
+  .toc ol { padding-left: 22px; margin: 0; columns: 2; column-gap: 28px; }
+  .toc li { margin-bottom: 4px; }
+  .toc a { color: var(--text); }
+  .toc a:hover { color: var(--accent); }
+  footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 560px) { .toc ol { columns: 1; } }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="brand">⏱ Leviva Fast · Kodaru Systems</div>
+    <div class="brand">⏱ LevivaFast · Kodaru System</div>
     <h1>Terms of Use</h1>
-    <div class="updated">Last updated: July 21, 2026</div>
+    <div class="updated">Last updated: July 25, 2026</div>
   </header>
 
-  <p>These Terms of Use govern your use of the <strong>Leviva Fast</strong> application
-  ("the App"), developed by <strong>Kodaru Systems</strong> ("we"). By installing or using
-  the App, you agree to these Terms. If you do not agree, do not use the App.</p>
+  <p>These Terms of Use ("Terms") form the End User License Agreement between you and
+  <strong>Kodaru System</strong> ("we", "us") and govern your use of the <strong>LevivaFast</strong>
+  application ("the App"). They apply to the App on both <strong>iOS</strong> (Apple App Store) and
+  <strong>Android</strong> (Google Play). Where a clause applies to only one platform, it is marked
+  <span class="tag ios">iOS</span> or <span class="tag android">Android</span>.</p>
 
-  <h2>1. Description of the service</h2>
-  <p>Leviva Fast is an intermittent fasting tracking application. It helps you start and
-  track fasting windows, choose a fasting protocol, view your history and progress, and
-  receive reminder notifications, with optional cloud sync via a Google Account.</p>
+  <p>By installing or using the App, you agree to these Terms. If you do not agree, do not use the App.</p>
 
-  <h2>2. Medical disclaimer</h2>
-  <p><strong>Leviva Fast is not a medical device and does not provide diagnosis, treatment
-  or medical advice of any kind.</strong> Intermittent fasting is not appropriate for
-  everyone. Consult a qualified healthcare professional before starting any fasting
-  protocol, especially if you are pregnant or breastfeeding, are under 18, have diabetes or
-  any condition affecting blood sugar, have a history of eating disorders, take prescription
-  medication, or have any pre-existing medical condition. Stop fasting and seek medical
-  attention if you feel unwell. The timers, protocols and progress shown by the App are
-  informational tools only and are not a substitute for professional guidance.</p>
+  <div class="card toc">
+    <ol>
+      <li><a href="#service">Description of the service</a></li>
+      <li><a href="#medical">Medical disclaimer</a></li>
+      <li><a href="#eligibility">Eligibility and accounts</a></li>
+      <li><a href="#license">License granted to you</a></li>
+      <li><a href="#subscription">Free version and Premium subscription</a></li>
+      <li><a href="#refunds">Refunds and consumer rights</a></li>
+      <li><a href="#conduct">User conduct</a></li>
+      <li><a href="#content">Your data and content</a></li>
+      <li><a href="#ip">Intellectual property</a></li>
+      <li><a href="#availability">Service availability</a></li>
+      <li><a href="#termination">Termination</a></li>
+      <li><a href="#liability">Disclaimer and limitation of liability</a></li>
+      <li><a href="#apple">Apple-specific terms</a></li>
+      <li><a href="#google">Google-specific terms</a></li>
+      <li><a href="#changes">Changes to these Terms</a></li>
+      <li><a href="#law">Governing law</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </div>
 
-  <h2>3. Account and eligibility</h2>
-  <p>Basic use of the App does not require registration. Linking a Google Account is
-  optional and intended solely for syncing and backing up data across devices. The App is
-  not directed at children under 13 years of age.</p>
+  <h2 id="service">1. Description of the service</h2>
+  <p>LevivaFast is a personal intermittent fasting and wellness tracking application. It lets you
+  choose a fasting protocol, start and track fasting windows, and record information about yourself
+  including weight, body measurements, water intake, electrolytes, blood glucose and ketones, blood
+  pressure, heart rate, sleep and self-reported symptoms. It presents that information back to you as
+  history, charts and statistics, and can send reminder notifications. Cloud sync and backup are
+  optional and require signing in.</p>
 
-  <h2>4. Free version and Premium subscription</h2>
+  <h2 id="medical">2. Medical disclaimer</h2>
+  <div class="card warn">
+    <p><strong>LevivaFast is not a medical device and does not provide diagnosis, treatment or
+    medical advice of any kind.</strong> Every timer, protocol, chart, range and alert shown by the
+    App is an informational tool built from the data you entered yourself. Nothing in the App is a
+    substitute for professional medical guidance.</p>
+    <p>Intermittent fasting is not appropriate for everyone. Consult a qualified healthcare
+    professional before starting any fasting protocol, and in particular if you are pregnant or
+    breastfeeding, are under 18, have diabetes or any condition affecting blood sugar, have a
+    history of disordered eating, take prescription medication, or have any pre-existing medical
+    condition.</p>
+    <p><strong>Stop fasting and seek medical attention if you feel unwell.</strong> You are solely
+    responsible for any decision you make about your own health.</p>
+  </div>
+
+  <h2 id="eligibility">3. Eligibility and accounts</h2>
+  <p>You must be at least 18 years old to use the App. The App is not directed at children under 13
+  years of age, and we do not knowingly collect their data.</p>
+  <p>Basic use of the App does not require an account. Signing in is optional and exists solely to
+  sync and back up your data across your devices. <span class="tag ios">iOS</span> You may sign in
+  with Apple or with a Google Account. <span class="tag android">Android</span> You may sign in with
+  a Google Account.</p>
+  <p>You are responsible for keeping your sign-in credentials secure. You can sign out at any time,
+  and you can delete your account and its cloud data from within the App, under Settings.</p>
+
+  <h2 id="license">4. License granted to you</h2>
+  <p>Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, revocable
+  license to install and use the App for your own personal, non-commercial purposes on devices you
+  own or control. This is a license, not a sale: we retain all rights not expressly granted here.</p>
+
+  <h2 id="subscription">5. Free version and Premium subscription</h2>
   <ul>
-    <li>The free version of Leviva Fast displays ads provided by Google AdMob.</li>
-    <li>The <strong>Premium subscription</strong> is offered on a <strong>monthly</strong>
-      and an <strong>annual</strong> plan. It removes ads and unlocks the additional
-      features described on the App's upgrade screen.</li>
-    <li><strong>Subscriptions renew automatically</strong> at the end of each billing
-      period unless auto-renewal is turned off at least 24 hours before the end of the
-      current period. Your Google Play account is charged for renewal within 24 hours prior
-      to the end of the current period.</li>
-    <li>You can manage or cancel your subscription at any time in the Google Play Store,
-      under Payments &amp; subscriptions. Cancelling stops future renewals; access to
-      premium features remains until the end of the period already paid for.</li>
-    <li>Purchases are processed exclusively through <strong>Google Play Billing</strong>
-      and are subject to the
-      <a href="https://play.google.com/about/play-terms/" target="_blank" rel="noopener">Google Play purchase policies</a>.
-      Refunds follow the rules of the Google Play Store itself.</li>
-    <li>The subscription is tied to the Google Play Store account used at the time of
-      purchase.</li>
+    <li>The free version of LevivaFast displays advertising provided by Google AdMob.</li>
+    <li><strong>LevivaFast Premium</strong> removes advertising and unlocks the additional features
+      described on the App's upgrade screen. The plans available, their duration and their price in
+      your local currency are shown on that screen before you purchase, and are the authoritative
+      source — this page does not list prices, because they vary by region and may change.</li>
+    <li><strong>Subscriptions renew automatically</strong> at the end of each billing period unless
+      auto-renewal is turned off at least 24 hours before the end of the current period. Your store
+      account is charged for renewal within 24 hours prior to the end of the current period.</li>
+    <li>Cancelling stops future renewals. Access to premium features continues until the end of the
+      period already paid for. No partial refunds are issued for an unused portion of a period,
+      except where required by law.</li>
+    <li>Any free trial period offered forfeits automatically if you purchase a subscription during
+      the trial.</li>
+    <li>Your subscription is tied to the store account used at the time of purchase, not to your
+      LevivaFast account.</li>
   </ul>
 
-  <h2>5. User conduct</h2>
-  <p>You agree not to use the App for unlawful purposes, not to attempt to reverse
-  engineer, decompile or modify the App, and not to interfere with its normal operation or
-  with that of other users.</p>
+  <p><span class="tag ios">iOS</span> Payment is charged to your Apple Account at confirmation of
+  purchase. You can manage or cancel your subscription, and turn off auto-renewal, in your Apple
+  Account settings. Purchases are processed exclusively through Apple In-App Purchase and are
+  subject to the
+  <a href="https://www.apple.com/legal/internet-services/itunes/" target="_blank" rel="noopener">Apple Media Services Terms and Conditions</a>.</p>
 
-  <h2>6. Intellectual property</h2>
-  <p>All content, branding, design, source code and visual identity of Leviva Fast belong
-  to Kodaru Systems. No license is granted to the user beyond the right to personal,
-  non-commercial use of the App under these Terms.</p>
+  <p><span class="tag android">Android</span> Payment is charged to your Google Play account. You can
+  manage or cancel your subscription in the Google Play Store, under Payments &amp; subscriptions.
+  Purchases are processed exclusively through Google Play Billing and are subject to the
+  <a href="https://play.google.com/about/play-terms/" target="_blank" rel="noopener">Google Play Terms of Service</a>.</p>
 
-  <h2>7. Service availability</h2>
-  <p>Features that depend on an internet connection (cloud sync, ads) may be temporarily
-  unavailable for technical reasons. The core fasting timer and local reminder features
-  work even without an internet connection.</p>
+  <h2 id="refunds">6. Refunds and consumer rights</h2>
+  <p>We do not process payments and therefore cannot issue refunds directly. Refund requests are
+  handled by the store that processed your purchase, under that store's own policies.</p>
+  <p><span class="tag ios">iOS</span> Request a refund at
+  <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>.
+  <span class="tag android">Android</span> Request a refund through the Google Play Store.</p>
+  <p>Nothing in these Terms limits any statutory consumer right you have under the law of your
+  country of residence, including the Brazilian Consumer Protection Code (Law 8.078/1990) and, in
+  the European Union and United Kingdom, your statutory right of withdrawal.</p>
 
-  <h2>8. Limitation of liability</h2>
-  <p>The App is provided "as is", without warranties of any kind. To the maximum extent
-  permitted by applicable law, Kodaru Systems shall not be liable for indirect, incidental
-  or consequential damages arising from the use of or inability to use the App, including
-  any health outcome related to fasting practices adopted by the user.</p>
+  <h2 id="conduct">7. User conduct</h2>
+  <p>You agree not to use the App for any unlawful purpose, not to reverse engineer, decompile,
+  disassemble or modify the App except to the extent that applicable law expressly permits it, not to
+  circumvent any technical limitation or payment mechanism, and not to interfere with the normal
+  operation of the App or of our servers.</p>
 
-  <h2>9. Changes to these Terms</h2>
-  <p>We may update these Terms from time to time. Continued use of the App after an update
-  constitutes acceptance of the new Terms.</p>
+  <h2 id="content">8. Your data and content</h2>
+  <p>The records you enter remain yours. We claim no ownership over them. We process them only as
+  described in our
+  <a href="https://privacy-levivafast.vercel.app/" target="_blank" rel="noopener">Privacy Policy</a>,
+  which forms part of these Terms.</p>
+  <p>You are responsible for keeping your own copies of anything important to you. Most of your data
+  is stored locally on your device; if you do not sign in, deleting the App deletes that data
+  permanently, and we cannot recover it.</p>
 
-  <h2>10. Governing law</h2>
-  <p>These Terms are governed by the laws of the Federative Republic of Brazil.</p>
+  <h2 id="ip">9. Intellectual property</h2>
+  <p>All content, branding, design, source code and visual identity of LevivaFast belong to Kodaru
+  System and are protected by copyright and other laws. No license is granted to you beyond the right
+  of personal, non-commercial use described in section 4.</p>
 
-  <h2>11. Contact</h2>
-  <p>Questions about these Terms can be sent to
+  <h2 id="availability">10. Service availability</h2>
+  <p>Features that depend on an internet connection — cloud sync, sign-in, subscription validation
+  and advertising — may be temporarily unavailable for technical reasons. The fasting timer, local
+  records and reminder notifications work without an internet connection. We may modify, suspend or
+  discontinue any feature at any time; where a change materially reduces what a paid subscription
+  delivers, you may cancel and, where required by law, seek a proportionate refund from the store.</p>
+
+  <h2 id="termination">11. Termination</h2>
+  <p>You may terminate these Terms at any time by deleting the App and, if you created one, your
+  account. We may suspend or terminate your access if you materially breach these Terms. Sections 8
+  through 16 survive termination.</p>
+
+  <h2 id="liability">12. Disclaimer and limitation of liability</h2>
+  <p>The App is provided "as is" and "as available", without warranties of any kind, whether express
+  or implied, including any implied warranty of merchantability, fitness for a particular purpose or
+  non-infringement. We do not warrant that the App will be uninterrupted, error-free, or that the
+  information it displays is accurate or complete.</p>
+  <p>To the maximum extent permitted by applicable law, Kodaru System shall not be liable for any
+  indirect, incidental, special, consequential or punitive damages, or for any loss of data, profits
+  or goodwill, arising from your use of or inability to use the App — including any health outcome
+  related to fasting or other practices you adopt. Where liability cannot be excluded, our total
+  aggregate liability is limited to the amount you paid us for the App in the twelve months
+  preceding the claim.</p>
+  <p>Some jurisdictions do not allow the exclusion of certain warranties or the limitation of certain
+  damages. In those jurisdictions, the exclusions and limitations above apply only to the extent the
+  law permits, and your statutory rights are unaffected.</p>
+
+  <h2 id="apple">13. Apple-specific terms</h2>
+  <p><span class="tag ios">iOS</span> The following applies to the App obtained through the Apple App
+  Store and is required by Apple. In the event of a conflict, this section prevails over the rest of
+  these Terms for App Store users.</p>
+  <ol>
+    <li><strong>Acknowledgement.</strong> These Terms are concluded between you and Kodaru System
+      only, and not with Apple. Kodaru System, not Apple, is solely responsible for the App and its
+      content.</li>
+    <li><strong>Scope of license.</strong> The license granted to you in section 4 is limited to a
+      non-transferable license to use the App on any Apple-branded product that you own or control,
+      as permitted by the Usage Rules set out in the Apple Media Services Terms and Conditions,
+      except that the App may be accessed by other accounts associated with you via Family Sharing or
+      volume purchasing.</li>
+    <li><strong>Maintenance and support.</strong> Kodaru System is solely responsible for providing
+      any maintenance and support services for the App. Apple has no obligation whatsoever to furnish
+      any maintenance and support services with respect to the App.</li>
+    <li><strong>Warranty.</strong> Kodaru System is solely responsible for any product warranties,
+      whether express or implied by law, to the extent not effectively disclaimed. In the event of
+      any failure of the App to conform to any applicable warranty, you may notify Apple, and Apple
+      will refund the purchase price for the App to you; to the maximum extent permitted by
+      applicable law, Apple will have no other warranty obligation whatsoever with respect to the
+      App.</li>
+    <li><strong>Product claims.</strong> Kodaru System, not Apple, is responsible for addressing any
+      claims by you or any third party relating to the App or your possession and use of it,
+      including product liability claims, any claim that the App fails to conform to any applicable
+      legal or regulatory requirement, and claims arising under consumer protection, privacy or
+      similar legislation.</li>
+    <li><strong>Intellectual property rights.</strong> In the event of any third party claim that the
+      App or your possession and use of the App infringes that third party's intellectual property
+      rights, Kodaru System, not Apple, will be solely responsible for the investigation, defense,
+      settlement and discharge of any such claim.</li>
+    <li><strong>Legal compliance.</strong> You represent and warrant that you are not located in a
+      country that is subject to a U.S. Government embargo, or that has been designated by the U.S.
+      Government as a "terrorist supporting" country, and that you are not listed on any U.S.
+      Government list of prohibited or restricted parties.</li>
+    <li><strong>Developer name and address.</strong> Questions, complaints or claims with respect to
+      the App should be directed to Kodaru System at
+      <a href="mailto:cadufelicioandrade@gmail.com">cadufelicioandrade@gmail.com</a>. Postal address:
+      <strong>[INSIRA AQUI O ENDEREÇO COMERCIAL COMPLETO]</strong>.</li>
+    <li><strong>Third party terms.</strong> You must comply with applicable third party terms of
+      agreement when using the App.</li>
+    <li><strong>Third party beneficiary.</strong> Apple and Apple's subsidiaries are third party
+      beneficiaries of these Terms and, upon your acceptance of them, Apple will have the right (and
+      will be deemed to have accepted the right) to enforce these Terms against you as a third party
+      beneficiary.</li>
+  </ol>
+
+  <h2 id="google">14. Google-specific terms</h2>
+  <p><span class="tag android">Android</span> The App obtained through Google Play is also subject to
+  the <a href="https://play.google.com/about/play-terms/" target="_blank" rel="noopener">Google Play
+  Terms of Service</a>. Google is not a party to these Terms and is not responsible for the App.
+  Kodaru System, not Google, is solely responsible for the App, its content, and any support,
+  warranty or claim relating to it.</p>
+
+  <h2 id="changes">15. Changes to these Terms</h2>
+  <p>We may update these Terms from time to time. The "last updated" date at the top of this page
+  reflects the current version. Where a change is material, we will announce it inside the App before
+  it takes effect. Continued use of the App after an update constitutes acceptance of the new
+  Terms.</p>
+
+  <h2 id="law">16. Governing law</h2>
+  <p>These Terms are governed by the laws of the Federative Republic of Brazil, without regard to
+  conflict of law rules. If you are a consumer resident elsewhere, this choice does not deprive you
+  of the protection of mandatory consumer law in your country of residence.</p>
+
+  <h2 id="contact">17. Contact</h2>
+  <p>Kodaru System — questions about these Terms can be sent to
   <a href="mailto:cadufelicioandrade@gmail.com">cadufelicioandrade@gmail.com</a>.</p>
 
-  <footer>© 2026 Kodaru Systems. All rights reserved.</footer>
+  <footer>© 2026 Kodaru System. All rights reserved.</footer>
 </div>
 </body>
 </html>
