@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>DropPulse — Privacy Policy | Kodaru System</title>
-<meta name="description" content="Privacy Policy for DropPulse (com.app.beberagua), developed by Carlos Eduardo Felicio de Andrade. How DropPulse accesses, collects, uses and shares user data." />
+<meta name="description" content="Privacy Policy for DropPulse / WaterPulse: Drink Water (com.app.beberagua), developed by Carlos Eduardo Felicio de Andrade. How the app accesses, collects, uses and shares user data on Google Play and the Apple App Store." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -320,6 +320,27 @@
   }
   .contact-line strong{ color: var(--navy); }
 
+  /* ---------- Platform badges ---------- */
+  .tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    font-weight:500;
+    letter-spacing:.06em;
+    text-transform: uppercase;
+    padding: 1px 8px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    background: var(--paper);
+    vertical-align: 1px;
+    margin-right: 6px;
+    white-space: nowrap;
+  }
+  .tag.ios{ border-color:#B9C9D6; color: var(--navy); }
+  .tag.android{ border-color: var(--mint); color: var(--mint-deep); }
+  td .tag{ margin-bottom: 4px; }
+
   .note{
     font-size: 13px;
     color: var(--ink-soft);
@@ -370,8 +391,11 @@
       <dt>Application</dt>
       <dd>DropPulse</dd>
 
-      <dt>Package name</dt>
+      <dt>Bundle / package</dt>
       <dd><code>com.app.beberagua</code></dd>
+
+      <dt>Stores</dt>
+      <dd>Google Play · Apple App Store (App ID <code>6789282591</code>)</dd>
 
       <dt>Developer</dt>
       <dd>Carlos Eduardo Felicio de Andrade</dd>
@@ -389,6 +413,7 @@
       <p class="eyebrow">Privacy policy</p>
       <h1>DropPulse Privacy Policy</h1>
       <p>This Privacy Policy explains how <strong>DropPulse</strong> (<code>com.app.beberagua</code>), developed and operated by <strong>Carlos Eduardo Felicio de Andrade</strong>, accesses, collects, uses, shares and protects your data.</p>
+      <p>It applies to the app on <strong>Android</strong> (Google Play) and on <strong>iOS</strong> (Apple App Store), where it is listed as <strong>WaterPulse: Drink Water</strong>. Practices that apply to only one platform are marked <span class="tag ios">iOS</span> or <span class="tag android">Android</span>.</p>
       <p class="effective">Effective date: July 2026 · Last updated: July 2026</p>
     </div>
     <div class="art-box">
@@ -438,10 +463,10 @@
 
   <section id="who-we-are">
     <h2>1. Who we are</h2>
-    <p><strong>DropPulse</strong> is a hydration tracking application that helps you record your daily water intake, set goals and receive reminders. The app is published on Google Play under the package name <code>com.app.beberagua</code>.</p>
+    <p><strong>DropPulse</strong> is a hydration tracking application that helps you record your daily water intake, set goals and receive reminders. It is published on <strong>Google Play</strong> and on the <strong>Apple App Store</strong> under the bundle identifier <code>com.app.beberagua</code>. On the App Store the listing title is <strong>WaterPulse: Drink Water</strong> (App ID <code>6789282591</code>); it is the same application, the same developer and the same data practices described here.</p>
     <p>DropPulse is developed and operated by <strong>Carlos Eduardo Felicio de Andrade</strong>, an independent developer based in Brazil, who publishes the app under the brand name <strong>Kodaru System</strong>. Carlos Eduardo Felicio de Andrade is the data controller responsible for the personal data described in this policy.</p>
     <p>For any privacy question, request or complaint, you can contact us at any time at <a href="mailto:cadufelicioandrade@gmail.com">cadufelicioandrade@gmail.com</a>. This address is our privacy point of contact and is monitored directly by the developer.</p>
-    <p>DropPulse was previously published under the name <strong>WaterPulse</strong>. The application, the developer and the data practices described here are the same; only the name has changed.</p>
+    <p>The app was previously published under the name <strong>WaterPulse</strong>, and that name is still in use on the Apple App Store listing. The application, the developer and the data practices described here are the same; only the name differs between stores.</p>
   </section>
 
   <section id="data-collected">
@@ -460,7 +485,7 @@
         <tbody>
           <tr>
             <td>Name, email address and profile photo</td>
-            <td>Provided by your sign-in provider to create and identify your DropPulse account</td>
+            <td>Provided by your sign-in provider (Google, or <span class="tag ios">iOS</span> Sign in with Apple) to create and identify your account. If you sign in with Apple and choose to hide your email, we receive only a private relay address and never see your real one.</td>
             <td>Only if you create an account</td>
           </tr>
           <tr>
@@ -490,13 +515,13 @@
           </tr>
           <tr>
             <td>Advertising identifier</td>
-            <td>Serve ads through Google AdMob in the free version</td>
+            <td>Serve ads through Google AdMob in the free version. <span class="tag ios">iOS</span> The identifier (IDFA) is only used for personalised advertising if you allow it in the App Tracking Transparency prompt; if you decline, ads are still shown but are not personalised.</td>
             <td>Free version only</td>
           </tr>
           <tr>
             <td>Purchase and subscription records</td>
-            <td>Validate and manage your subscription; processed by Google Play Billing</td>
-            <td>Only if you subscribe</td>
+            <td>Validate and manage your purchase. Payment is processed by <span class="tag android">Android</span> Google Play Billing or <span class="tag ios">iOS</span> Apple In-App Purchase, and entitlement status is managed through RevenueCat. We never receive or store your payment card details.</td>
+            <td>Only if you buy</td>
           </tr>
         </tbody>
       </table>
@@ -563,14 +588,24 @@
             <td><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">policies.google.com</a></td>
           </tr>
           <tr>
-            <td>Google Play Billing</td>
+            <td>Google Play Billing <span class="tag android">Android</span></td>
             <td>Processing of subscriptions and in-app purchases</td>
             <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com</a></td>
           </tr>
           <tr>
-            <td>Google Play Services</td>
+            <td>Google Play Services <span class="tag android">Android</span></td>
             <td>App distribution, updates and crash diagnostics</td>
             <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com</a></td>
+          </tr>
+          <tr>
+            <td>Apple <span class="tag ios">iOS</span></td>
+            <td>Sign in with Apple, In-App Purchase processing, app distribution and crash diagnostics</td>
+            <td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">apple.com</a></td>
+          </tr>
+          <tr>
+            <td>RevenueCat</td>
+            <td>Manages your subscription status across devices and stores. Receives an anonymous or account-linked user identifier and your purchase history from the store — never your payment details.</td>
+            <td><a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener">revenuecat.com</a></td>
           </tr>
         </tbody>
       </table>
@@ -584,8 +619,9 @@
     <p>DropPulse requests only the permissions required for its features. Each is optional and can be revoked at any time in your device settings.</p>
     <ul>
       <li><strong>Notifications:</strong> to deliver the hydration reminders you configure. Denying this permission disables reminders but not the rest of the app.</li>
-      <li><strong>Internet access:</strong> to sync your data with the cloud, load ads and process subscriptions.</li>
-      <li><strong>Scheduled alarms:</strong> to trigger reminders at the times you set, even when the app is closed.</li>
+      <li><strong>Internet access:</strong> to sync your data with the cloud, load ads and process purchases.</li>
+      <li><span class="tag android">Android</span> <strong>Scheduled alarms:</strong> to trigger reminders at the times you set, even when the app is closed.</li>
+      <li><span class="tag ios">iOS</span> <strong>App Tracking Transparency:</strong> asked once, before any personalised advertising. Declining does not affect any feature of the app — you simply see non-personalised ads.</li>
     </ul>
     <p>DropPulse does not request access to your location, camera, microphone, contacts, storage or any other sensitive permission.</p>
   </section>
@@ -615,14 +651,19 @@
       <li>Lodge a complaint with a supervisory authority — in Brazil, the ANPD</li>
     </ul>
     <p>To exercise any of these rights, write to <a href="mailto:cadufelicioandrade@gmail.com">cadufelicioandrade@gmail.com</a>. We respond within <strong>30 days</strong>. You do not need an active account to submit a request.</p>
-    <p>You can also reset or delete your advertising identifier at any time in your Android device settings, under <strong>Settings → Google → Ads</strong>.</p>
+    <p>You can also limit advertising personalisation at any time in your device settings:</p>
+    <ul>
+      <li><span class="tag android">Android</span> <strong>Settings → Google → Ads</strong>, where you can reset or delete your advertising identifier.</li>
+      <li><span class="tag ios">iOS</span> <strong>Settings → Privacy &amp; Security → Tracking</strong>, where you can withdraw the tracking permission you granted.</li>
+    </ul>
+    <p>Managing or cancelling a purchase is done in the store that processed it: <span class="tag android">Android</span> the Google Play Store, under Payments &amp; subscriptions, or <span class="tag ios">iOS</span> your Apple Account settings.</p>
   </section>
 
   <section id="deletion">
     <h2>9. Account and data deletion</h2>
     <p>You can delete your DropPulse account and all associated personal data at any time, in two ways:</p>
     <ul>
-      <li><strong>Inside the app:</strong> open DropPulse, tap the <strong>Me</strong> tab in the bottom navigation bar, go to the <strong>Account</strong> section and tap <strong>Delete account</strong>.</li>
+      <li><strong>Inside the app:</strong> open the app, tap the <strong>Me</strong> tab in the bottom navigation bar, go to the <strong>Account</strong> section and tap <strong>Delete account</strong>. This path is available on both Android and iOS.</li>
       <li><strong>By email:</strong> write to <a href="mailto:cadufelicioandrade@gmail.com">cadufelicioandrade@gmail.com</a> with the subject "Account deletion request — DropPulse", including the email address you use to sign in.</li>
     </ul>
     <div class="callout">
@@ -643,7 +684,7 @@
 
   <section id="transfers">
     <h2>12. International data transfers</h2>
-    <p>Your data is stored on Google Cloud infrastructure, which may process and store information on servers located outside your country of residence. These transfers are protected by the safeguards offered by Google Cloud, including standard contractual clauses, in accordance with applicable data protection law.</p>
+    <p>Your data is stored on Google Cloud infrastructure, and purchase records are processed by Apple, Google and RevenueCat, all of which may process and store information on servers located outside your country of residence — including in the United States. These transfers are protected by the safeguards offered by each provider, including standard contractual clauses, in accordance with applicable data protection law.</p>
   </section>
 
   <section id="changes">
@@ -670,7 +711,7 @@
       <strong>DropPulse</strong> · <code>com.app.beberagua</code> · developed by <strong>Carlos Eduardo Felicio de Andrade</strong> (Kodaru System) · <a href="mailto:cadufelicioandrade@gmail.com">cadufelicioandrade@gmail.com</a>
     </div>
 
-    <p class="note">This is the official Privacy Policy for the <strong>DropPulse</strong> application published on Google Play by <strong>Carlos Eduardo Felicio de Andrade</strong>. Account deletion requests are handled at <a href="https://waterpulse-account-deletion.vercel.app/" target="_blank" rel="noopener">waterpulse-account-deletion.vercel.app</a>.</p>
+    <p class="note">This is the official Privacy Policy for the <strong>DropPulse</strong> application (listed on the Apple App Store as <strong>WaterPulse: Drink Water</strong>), published on Google Play and the Apple App Store by <strong>Carlos Eduardo Felicio de Andrade</strong> under the brand <strong>Kodaru System</strong>. Account deletion requests are handled at <a href="https://waterpulse-account-deletion.vercel.app/" target="_blank" rel="noopener">waterpulse-account-deletion.vercel.app</a>.</p>
   </section>
 
 </main>
