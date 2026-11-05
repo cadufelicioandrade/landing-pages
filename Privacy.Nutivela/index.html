@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F7F8F6">
+  <meta name="description" content="Política de Privacidade do Nutivela: saiba como seus dados, fotos de refeições e informações de assinatura são tratados.">
+  <title>Política de Privacidade | Nutivela</title>
+  <style>
+    :root {--bg:#F7F8F6;--surface:#FFFFFF;--ink:#202B2A;--muted:#586A67;--accent:#087E6B;--mint:#10A68C;--soft:#DCEEE7;--line:#D8E4DF;--warning:#FEF3D5}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+    .wrap{max-width:880px;margin:auto;padding:34px 22px 86px}.mast{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:24px;border-bottom:1px solid var(--line)}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:19px;letter-spacing:-.025em}.mark{display:grid;place-items:center;width:41px;height:41px;background:var(--accent);color:white;border-radius:13px;font-size:22px}
+    .brand small{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;line-height:1.1}.switch{display:flex;background:white;border:1px solid var(--line);border-radius:999px;padding:4px;gap:3px}
+    .switch button{border:0;background:transparent;color:var(--muted);font:700 13px inherit;font-weight:700;padding:7px 12px;border-radius:999px;cursor:pointer}.switch button[aria-pressed=true]{background:var(--accent);color:#fff}
+    h1{font-size:clamp(29px,5vw,42px);letter-spacing:-.045em;line-height:1.16;margin:35px 0 12px}h2{font-size:21px;line-height:1.4;letter-spacing:-.02em;margin:38px 0 12px;padding-bottom:9px;border-bottom:1px solid var(--line)}h3{font-size:16px;margin:23px 0 5px}
+    p,li{font-size:15.5px}p{margin:10px 0 15px}ul{padding-left:23px}li{margin-bottom:8px}a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}a:hover{color:#075848}
+    .meta{color:var(--muted);font-size:13px}.lead{font-size:17px;max-width:760px}.card{border:1px solid var(--line);border-radius:17px;background:var(--surface);padding:20px 24px;margin:22px 0}.card p:last-child{margin-bottom:0}.notice{background:var(--warning);border:1px solid #E8CF89;border-radius:13px;padding:14px 18px;font-size:14px;margin:24px 0}.notice strong{display:block;margin-bottom:3px}.toc{background:var(--soft);border-color:#C3E0D4}.toc ul{columns:2;column-gap:36px;padding-left:20px;margin:6px 0}.toc li{break-inside:avoid;margin-bottom:5px}.toc a{color:var(--ink);text-decoration:none}.toc a:hover{text-decoration:underline;color:var(--accent)}
+    .table-scroll{overflow-x:auto}.data-table{width:100%;border-collapse:collapse;text-align:left;font-size:14px;min-width:580px}.data-table th,.data-table td{padding:11px 9px;border-bottom:1px solid var(--line);vertical-align:top}.data-table th{color:var(--muted);font-size:12px}.data-table tr:last-child td{border:0}
+    .pill{display:inline-block;border:1px solid #A2CEC0;color:#086D5C;background:#F0FAF6;border-radius:999px;font-size:12px;font-weight:700;padding:1px 9px}footer{margin-top:53px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}footer a{font-size:13px}.language[hidden]{display:none!important}
+    @media(max-width:560px){.wrap{padding:22px 17px 60px}.card{padding:17px}.toc ul{columns:1}h2{font-size:19px}.mast{align-items:flex-start}}
+    @media print{.switch,.notice{display:none}.wrap{max-width:none}.card{break-inside:avoid}body{background:#fff}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header class="mast">
+    <div class="brand"><span class="mark" aria-hidden="true">✦</span><span>Nutivela<small>Kodaru System</small></span></div>
+    <div class="switch" role="group" aria-label="Idioma / Language">
+      <button type="button" id="ptBtn" aria-pressed="true" onclick="setLang('pt')">Português</button>
+      <button type="button" id="enBtn" aria-pressed="false" onclick="setLang('en')">English</button>
+    </div>
+  </header>
+  <main id="pt" class="language" lang="pt-BR">
+    <h1>Política de Privacidade</h1>
+    <div class="meta">Nutivela · Android e iOS · Atualização do rascunho: 4 de novembro de 2026</div>
+    <p class="lead">Esta Política explica como o Nutivela trata informações pessoais ao oferecer registro alimentar, acompanhamento de metas, análise de refeições por inteligência artificial e planos alimentares personalizados.</p>
+    <div class="notice"><strong>Documento preparado para revisão antes da publicação.</strong> Identificação jurídica do responsável, política aplicável a menores e condições dos fornecedores de IA ainda exigem confirmação. Não utilize este rascunho como política definitiva sem revisar esses pontos.</div>
+    <nav class="card toc" aria-label="Índice"><strong>Nesta página</strong><ul>
+      <li><a href="#pt-controller">Responsável e contato</a></li><li><a href="#pt-data">Dados tratados</a></li><li><a href="#pt-ai">Fotos e inteligência artificial</a></li><li><a href="#pt-purposes">Finalidades e bases legais</a></li><li><a href="#pt-providers">Fornecedores e compartilhamento</a></li><li><a href="#pt-storage">Armazenamento e conservação</a></li><li><a href="#pt-rights">Direitos e exclusão</a></li><li><a href="#pt-subscriptions">Assinaturas</a></li><li><a href="#pt-security">Segurança</a></li><li><a href="#pt-children">Menores de idade</a></li><li><a href="#pt-changes">Alterações e contato</a></li>
+    </ul></nav>
+    <h2 id="pt-controller">1. Responsável e contato</h2>
+    <p>O aplicativo <strong>Nutivela</strong> é desenvolvido sob a marca <strong>Kodaru System</strong>, no Brasil. Os dados cadastrais completos do controlador (razão social ou nome civil, CPF/CNPJ, conforme aplicável, e endereço para contato) serão incluídos após confirmação pelo responsável.</p>
+    <p>Dúvidas ou solicitações sobre privacidade: <a href="mailto:contact@kodarusystem.com">contact@kodarusystem.com</a>.</p>
+    <h2 id="pt-data">2. Quais dados tratamos</h2>
+    <div class="card table-scroll"><table class="data-table"><thead><tr><th>Categoria</th><th>Exemplos</th><th>Utilização</th></tr></thead><tbody>
+      <tr><td>Conta</td><td>Identificador da conta, nome e e-mail fornecidos pelo login Google ou Apple, quando disponíveis</td><td>Autenticação, identificação e sincronização da conta</td></tr>
+      <tr><td>Perfil e metas</td><td>Idade, sexo informado, altura, peso, atividade física, objetivo, metas nutricionais</td><td>Cálculo de metas, Diário e personalização do plano</td></tr>
+      <tr><td>Diário alimentar</td><td>Alimentos, quantidades, calorias, macronutrientes, consumo de água, histórico e registros corrigidos por você</td><td>Registro, acompanhamento e gráficos de progresso</td></tr>
+      <tr><td>Preferências alimentares</td><td>Alimentos preferidos ou rejeitados, padrões alimentares, alergias/intolerâncias informadas, refeições livres</td><td>Preparação e validação de planos alimentares</td></tr>
+      <tr><td>Conteúdo enviado para IA</td><td>Imagem da refeição quando você solicita análise; informações necessárias para gerar um plano</td><td>Estimar alimentos e porções; elaborar o plano solicitado</td></tr>
+      <tr><td>Assinatura e dados técnicos</td><td>UID, direitos Premium, status do teste/assinatura, contadores de uso, dados técnicos de integridade</td><td>Validar acesso, prevenir abuso e manter o serviço</td></tr>
+    </tbody></table></div>
+    <p>Alguns desses dados, especialmente informações sobre corpo, alimentação e restrições, podem constituir <strong>dados pessoais sensíveis</strong> nos termos da LGPD.</p>
+    <h2 id="pt-ai">3. Fotos de refeições e inteligência artificial</h2>
+    <p>Ao escolher a função <strong>Analisar com IA</strong>, a foto é preparada e enviada ao servidor do Nutivela para análise pelo provedor <strong>Anthropic</strong>. O resultado apresenta estimativas de alimentos, porções e nutrientes, que você pode revisar ou corrigir. A foto da análise não é mantida como histórico permanente do Diário; podem existir cópias temporárias técnicas durante o processamento e os prazos de eliminação dessas cópias precisam ser verificados antes da publicação.</p>
+    <p>Para gerar seu plano alimentar, usamos os dados de perfil e as preferências necessárias à solicitação. O pedido ao provedor de IA é estruturado para não incluir seu nome ou e-mail. Os resultados confirmados por você e os planos gerados podem ser armazenados na sua conta para permitir consulta e sincronização.</p>
+    <div class="card"><strong>Importante:</strong> análises de fotos e planos alimentares são estimativas e podem conter erros. O Nutivela não substitui nutricionista, médico ou outros profissionais de saúde; não oferece diagnóstico, prescrição nem tratamento.</div>
+    <p>As condições contratuais do provedor de IA sobre retenção, eventual uso para treinamento e transferência internacional deverão ser verificadas e refletidas na versão final desta política.</p>
+    <h2 id="pt-purposes">4. Finalidades e bases legais</h2>
+    <p>Os dados são usados para autenticar a conta, registrar consumo alimentar, calcular metas, gerar planos, administrar assinaturas e manter a segurança. Para dados de saúde e outras informações sensíveis, a base legal proposta é o <strong>consentimento específico e destacado</strong>, sujeito à confirmação jurídica e à implementação consistente do respectivo fluxo no aplicativo. Para prestação do serviço e assinatura, poderá ser aplicável a execução de contrato; para proteção técnica e prevenção de abuso, outras bases legais permitidas pela LGPD, conforme o caso.</p>
+    <p>Não vendemos dados pessoais e não utilizamos seus registros alimentares ou informações de saúde para publicidade comportamental. A consulta de código de barras e a busca de alimentos não consomem sua franquia de análises por IA.</p>
+    <h2 id="pt-providers">5. Serviços terceiros e compartilhamento</h2>
+    <ul>
+      <li><strong>Google Firebase</strong> — autenticação, Firestore, funções do servidor e recursos de segurança. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de privacidade do Google</a>.</li>
+      <li><strong>Anthropic</strong> — processamento das solicitações de análise de refeições e geração de planos por IA. <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener noreferrer">Privacidade da Anthropic</a>.</li>
+      <li><strong>RevenueCat</strong> — administração do estado da assinatura e dos direitos Premium, com identificador de usuário do aplicativo. <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener noreferrer">Privacidade do RevenueCat</a>.</li>
+      <li><strong>Google Play e Apple App Store</strong> — processamento de compras e assinaturas nas respectivas plataformas. Não recebemos os dados completos do cartão usado no pagamento.</li>
+      <li><strong>Open Food Facts</strong> — consulta de dados públicos de alimentos e códigos de barras. As solicitações diretas ao serviço podem envolver informações técnicas de conexão, sujeitas às políticas do fornecedor. <a href="https://world.openfoodfacts.org/privacy" target="_blank" rel="noopener noreferrer">Privacidade do Open Food Facts</a>.</li>
+    </ul>
+    <p>Alguns fornecedores operam fora do Brasil. As transferências internacionais de dados deverão observar os requisitos aplicáveis da LGPD e as garantias contratuais pertinentes.</p>
+    <h2 id="pt-storage">6. Onde os dados ficam e por quanto tempo</h2>
+    <p>Dados de conta, registros alimentares, hidratação, metas, preferências e planos sincronizados são mantidos na infraestrutura Firebase, com controle de acesso por conta. Certas configurações e alimentos cadastrados manualmente podem permanecer apenas no dispositivo e não ser recuperáveis após a desinstalação.</p>
+    <p>Os dados associados à conta são conservados enquanto ela estiver ativa ou pelo período necessário para prestar o serviço. Após uma solicitação de exclusão, o fluxo do Nutivela inicia a remoção dos dados associados; a conclusão pode envolver etapas técnicas posteriores. Obrigações legais ou registros de transações mantidos pelas lojas e pelo RevenueCat poderão seguir prazos próprios.</p>
+    <h2 id="pt-rights">7. Seus direitos e exclusão de conta</h2>
+    <p>Conforme a legislação aplicável, você poderá solicitar confirmação de tratamento, acesso, correção, portabilidade quando cabível, informação sobre compartilhamento, revogação de consentimento e eliminação de dados.</p>
+    <p>Para excluir sua conta, use o caminho <strong>Perfil → Excluir conta</strong> no Nutivela. A operação pode exigir autenticação recente. Você também pode escrever para <a href="mailto:contact@kodarusystem.com?subject=Nutivela%20-%20Solicita%C3%A7%C3%A3o%20de%20privacidade">contact@kodarusystem.com</a>. A página pública de instruções para exclusão será disponibilizada em endereço HTTPS próprio antes da publicação comercial.</p>
+    <p>Desinstalar o aplicativo remove dados locais do dispositivo, mas <strong>não equivale à exclusão da conta e dos dados sincronizados</strong>.</p>
+    <h2 id="pt-subscriptions">8. Assinaturas e pagamentos</h2>
+    <p>O Nutivela oferece recursos gratuitos e uma assinatura <strong>Nutivela Premium</strong>, com opções mensal e anual e período de teste gratuito quando oferecido pela loja à conta elegível. Preços, impostos, período promocional e regras de renovação são exibidos pela respectiva loja antes da confirmação.</p>
+    <p>Assinaturas são processadas pela Google Play ou pela Apple App Store. O RevenueCat auxilia na verificação do status e do direito de acesso. Cancelar a renovação não implica necessariamente perda imediata do acesso: os benefícios podem continuar até o término do período já concedido. A assinatura deve ser gerenciada na loja utilizada para a compra.</p>
+    <h2 id="pt-security">9. Segurança</h2>
+    <p>O Nutivela utiliza autenticação, comunicações protegidas por HTTPS/TLS, regras de acesso no Firebase e verificações do lado do servidor para recursos Premium e franquias. Nenhum sistema é absolutamente imune a incidentes; medidas de proteção são revistas conforme a evolução do serviço.</p>
+    <h2 id="pt-children">10. Crianças e adolescentes</h2>
+    <p>O aplicativo atualmente possui regras de idade que precisam ser avaliadas antes da publicação comercial internacional. O tratamento de dados de menores, inclusive informações de saúde e eventuais assinaturas, depende da legislação local e de garantias adequadas. <strong>A política de idade mínima e eventual consentimento de responsável ainda devem ser definidos e implementados antes da publicação.</strong></p>
+    <h2 id="pt-changes">11. Alterações e contato</h2>
+    <p>Esta política pode ser revisada para refletir mudanças nos serviços e exigências legais. Alterações relevantes serão comunicadas conforme necessário. Para dúvidas ou solicitações: <a href="mailto:contact@kodarusystem.com">contact@kodarusystem.com</a>.</p>
+  </main>
+  <main id="en" class="language" lang="en" hidden>
+    <h1>Privacy Policy</h1>
+    <div class="meta">Nutivela · Android and iOS · Draft updated: November 4, 2026</div>
+    <p class="lead">This Policy explains how Nutivela handles personal information while providing food logging, nutrition goals, AI meal-photo analysis and personalized meal plans.</p>
+    <div class="notice"><strong>Draft for review before publication.</strong> The controller's legal identity, the policy for minors and AI provider terms require confirmation. Do not publish this draft as a final legal policy without reviewing these issues.</div>
+    <nav class="card toc" aria-label="Contents"><strong>On this page</strong><ul>
+      <li><a href="#en-controller">Controller and contact</a></li><li><a href="#en-data">Data we process</a></li><li><a href="#en-ai">Photos and AI</a></li><li><a href="#en-purposes">Purposes and legal bases</a></li><li><a href="#en-providers">Third-party providers</a></li><li><a href="#en-storage">Storage and retention</a></li><li><a href="#en-rights">Your rights and deletion</a></li><li><a href="#en-subscriptions">Subscriptions</a></li><li><a href="#en-security">Security</a></li><li><a href="#en-children">Children</a></li><li><a href="#en-changes">Changes and contact</a></li>
+    </ul></nav>
+    <h2 id="en-controller">1. Controller and contact</h2>
+    <p><strong>Nutivela</strong> is developed under the <strong>Kodaru System</strong> brand in Brazil. The data controller's complete legal details (registered legal or personal name, applicable tax identifier and contact address) will be included after confirmation by the operator.</p>
+    <p>Privacy questions and requests: <a href="mailto:contact@kodarusystem.com">contact@kodarusystem.com</a>.</p>
+    <h2 id="en-data">2. Information we process</h2>
+    <div class="card table-scroll"><table class="data-table"><thead><tr><th>Category</th><th>Examples</th><th>Purpose</th></tr></thead><tbody>
+      <tr><td>Account</td><td>User identifier and available name/email from Google or Apple sign-in</td><td>Authentication and account synchronization</td></tr>
+      <tr><td>Profile and goals</td><td>Age, reported sex, height, weight, activity level, goals and nutrition targets</td><td>Nutrition calculations and meal plans</td></tr>
+      <tr><td>Food diary</td><td>Foods, amounts, calories, macros, water intake, history and corrections</td><td>Logging and progress charts</td></tr>
+      <tr><td>Food preferences</td><td>Preferred/disliked foods, dietary patterns, reported allergies or intolerances, free meals</td><td>Personalization and validation of meal plans</td></tr>
+      <tr><td>AI inputs</td><td>Meal images when analysis is requested; necessary planning inputs</td><td>Food estimation and requested meal-plan generation</td></tr>
+      <tr><td>Subscription and technical</td><td>User ID, Premium status, trial dates, quota counters and integrity signals</td><td>Access control, fraud prevention and service reliability</td></tr>
+    </tbody></table></div>
+    <p>Information about your body, eating habits and restrictions may qualify as <strong>sensitive personal data</strong> under applicable law.</p>
+    <h2 id="en-ai">3. Meal photos and artificial intelligence</h2>
+    <p>When you choose <strong>Analyze with AI</strong>, your image is prepared and sent to Nutivela's server for analysis by <strong>Anthropic</strong>. The result contains estimated foods, portions and nutrients that you can review and correct. Analysis photos are not retained as a permanent food-diary history, although temporary technical copies may exist while processing. Their deletion periods must be verified before publishing the final policy.</p>
+    <p>To generate a meal plan, we send the profile and preferences needed for that request, structured without your name or email. Confirmed food entries and generated plans can be kept under your account for viewing and synchronization.</p>
+    <div class="card"><strong>Important:</strong> photo analysis and plans are estimates and may be inaccurate. Nutivela is not a medical device, does not provide diagnosis, prescriptions or treatment, and does not replace qualified healthcare professionals.</div>
+    <p>Anthropic's contractual terms regarding retention, possible model training and cross-border processing must be confirmed for the final policy.</p>
+    <h2 id="en-purposes">4. Purposes and legal bases</h2>
+    <p>We process data to authenticate users, log food and water intake, calculate targets, generate plans, manage subscriptions and secure the service. <strong>Specific, informed consent</strong> is the proposed basis for sensitive health-related information, subject to legal review and an appropriate in-app consent mechanism. Contractual necessity may support core services and subscriptions. Other lawful grounds may apply to technical security and abuse prevention as appropriate.</p>
+    <p>We do not sell personal information or use food logs or health-related information for behavioral advertising. Barcode lookup and food search do not count toward AI-photo quotas.</p>
+    <h2 id="en-providers">5. Third-party services</h2>
+    <ul>
+      <li><strong>Google Firebase</strong> — authentication, Firestore, cloud functions and security. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>.</li>
+      <li><strong>Anthropic</strong> — AI meal-photo analysis and meal-plan generation. <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener noreferrer">Anthropic Privacy Policy</a>.</li>
+      <li><strong>RevenueCat</strong> — subscription status and Premium entitlements using the application's account ID. <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener noreferrer">RevenueCat Privacy Policy</a>.</li>
+      <li><strong>Google Play and Apple App Store</strong> — subscriptions and payments. We do not receive full payment-card details.</li>
+      <li><strong>Open Food Facts</strong> — public food and barcode information. Direct requests may include technical connection data governed by that provider. <a href="https://world.openfoodfacts.org/privacy" target="_blank" rel="noopener noreferrer">Open Food Facts Privacy Policy</a>.</li>
+    </ul>
+    <p>Some providers process data outside Brazil. International transfers must comply with applicable data protection laws and appropriate safeguards.</p>
+    <h2 id="en-storage">6. Storage and retention</h2>
+    <p>Account information, synchronized food entries, water logs, goals, preferences and plans are stored using Firebase infrastructure with account-scoped access. Some preferences and manually added foods may remain only on the device and may not be recoverable after uninstalling.</p>
+    <p>Account data is retained while the account is active or as needed to provide the service. Account deletion starts the removal of associated data and may involve additional technical processing. Legally required transaction records held by app stores or RevenueCat may follow separate retention requirements.</p>
+    <h2 id="en-rights">7. Your rights and account deletion</h2>
+    <p>Depending on applicable law, you may request confirmation of processing, access, correction, applicable portability, information about data sharing, withdrawal of consent and deletion.</p>
+    <p>To delete your account, use <strong>Profile → Delete account</strong> within Nutivela; recent authentication may be required. You can also contact <a href="mailto:contact@kodarusystem.com?subject=Nutivela%20-%20Privacy%20request">contact@kodarusystem.com</a>. A public HTTPS account-deletion instruction page will be made available before commercial release.</p>
+    <p>Uninstalling the app removes local data but <strong>does not delete your cloud account and synchronized records</strong>.</p>
+    <h2 id="en-subscriptions">8. Subscriptions and payments</h2>
+    <p>Nutivela includes free features and <strong>Nutivela Premium</strong>, available on monthly and annual subscriptions, with a free trial where the store determines eligibility. Prices, taxes, trial periods and renewal terms are shown by the store before confirmation.</p>
+    <p>Google Play or Apple App Store processes payments. RevenueCat helps verify subscription status and entitlements. Cancellation of renewal may leave Premium available until the end of the granted period. Manage subscriptions through the store used to subscribe.</p>
+    <h2 id="en-security">9. Security</h2>
+    <p>Nutivela uses authenticated access, HTTPS/TLS, Firebase access rules and server-side verification of Premium access and quotas. No system can guarantee absolute security; protections are reviewed as the service evolves.</p>
+    <h2 id="en-children">10. Children and teens</h2>
+    <p>The application's current age-related behavior requires review before international commercial release. Processing minors' data, particularly health-related information and subscriptions, may require parental involvement and specific safeguards. <strong>The minimum age policy and any required guardian-consent flow must be finalized and implemented before publication.</strong></p>
+    <h2 id="en-changes">11. Changes and contact</h2>
+    <p>We may update this policy to reflect service changes and applicable law, providing notice of material changes as required. Contact: <a href="mailto:contact@kodarusystem.com">contact@kodarusystem.com</a>.</p>
+  </main>
+  <footer>© 2026 Kodaru System · Nutivela · <a href="mailto:contact@kodarusystem.com">contact@kodarusystem.com</a></footer>
+</div>
+<script>
+  function setLang(lang){
+    const english=lang==='en';
+    document.getElementById('pt').hidden=english;
+    document.getElementById('en').hidden=!english;
+    document.getElementById('ptBtn').setAttribute('aria-pressed',String(!english));
+    document.getElementById('enBtn').setAttribute('aria-pressed',String(english));
+    document.documentElement.lang=english?'en':'pt-BR';
+    document.title=english?'Privacy Policy | Nutivela':'Política de Privacidade | Nutivela';
+  }
+  const language=(new URLSearchParams(location.search).get('lang')||navigator.language||'pt').toLowerCase();
+  if(language.startsWith('en')) setLang('en');
+</script>
+</body>
+</html>
